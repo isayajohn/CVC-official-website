@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -14,7 +15,9 @@ import {
   Download,
   Star,
   Mic,
-  Cross
+  Cross,
+  ArrowBack,
+  ArrowForward
 } from '@/components/ui/icons/material';
 import Button from '@/components/ui/Button';
 import { SITE_NAME, SITE_SHORT_NAME } from '@/lib/site';
@@ -52,13 +55,56 @@ export default function HomePage() {
   ];
 
   const historyMilestones = [
-    { year: '2010', title: 'Founded', description: `${SITE_NAME} was established in Dar es Salaam` },
-    { year: '2013', title: 'First Album', description: 'Released our debut album "NdiMwu" with 12 tracks' },
-    { year: '2015', title: 'National Tour', description: 'Completed our first national tour across Tanzania' },
-    { year: '2018', title: 'Studio Launch', description: 'Opened our professional recording studio' },
-    { year: '2020', title: '10th Anniversary', description: 'Celebrated a decade of ministry and worship' },
-    { year: '2024', title: 'East Africa', description: 'Expanded our ministry across East Africa' }
+    {
+      year: '2010',
+      headline: 'Where the calling began',
+      intro: `A few committed voices started meeting in Dar es Salaam with one desire: to sing the gospel with honesty, warmth, and excellence.`,
+      description: `${SITE_SHORT_NAME} began in borrowed rehearsal spaces, but the vision was already bigger than the room. Those early sessions shaped our sound, our discipline, and our heart for ministry through music.`,
+      image: 'https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=900'
+    },
+    {
+      year: '2013',
+      headline: 'The first songs reached people',
+      intro: 'Our debut album turned rehearsed melodies into songs people could carry into prayer meetings, homes, and long journeys.',
+      description: 'Recording our first project taught us how to translate live worship into timeless listening. It opened new doors, introduced the choir to wider audiences, and confirmed that the message was resonating far beyond a single congregation.',
+      image: 'https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=900'
+    },
+    {
+      year: '2015',
+      headline: 'Worship found every road',
+      intro: 'What started locally became a national movement as we carried ministry from city stages to community gatherings across Tanzania.',
+      description: 'Our first national tour brought us face to face with the people behind the music. We learned to serve different churches, different regions, and different stories while staying rooted in the same gospel message.',
+      image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=900'
+    },
+    {
+      year: '2018',
+      headline: 'The year everything changed',
+      intro: 'Opening our own studio gave the choir a creative home and a new level of freedom to write, record, and mentor with intention.',
+      description: `With a dedicated production space, ${SITE_SHORT_NAME} grew from being only a performing choir into a stronger music ministry platform. We could refine our sound, support emerging voices, and create with consistency for the seasons ahead.`,
+      image: 'https://images.pexels.com/photos/3771836/pexels-photo-3771836.jpeg?auto=compress&cs=tinysrgb&w=900'
+    },
+    {
+      year: '2020',
+      headline: 'A decade of grace',
+      intro: 'Ten years in, the story was no longer just about milestones. It had become a testimony of endurance, worship, and transformed lives.',
+      description: 'Our anniversary season gave us room to look back with gratitude and forward with renewed responsibility. Every song, rehearsal, outreach, and prayer had become part of a shared legacy we were still building together.',
+      image: 'https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=900'
+    },
+    {
+      year: '2024',
+      headline: 'The ministry crossed borders',
+      intro: 'New invitations across East Africa expanded our reach while keeping the mission clear: worship deeply and serve people faithfully.',
+      description: `As the choir stepped into a broader regional chapter, the goal stayed the same. We are still building moments that point people to Christ, only now with a bigger stage, wider partnerships, and a growing community around the music.`,
+      image: 'https://images.pexels.com/photos/236339/pexels-photo-236339.jpeg?auto=compress&cs=tinysrgb&w=900'
+    }
   ];
+
+  const [activeHistoryIndex, setActiveHistoryIndex] = useState(3);
+  const activeHistoryMilestone = historyMilestones[activeHistoryIndex];
+
+  const stepHistory = (direction: number) => {
+    setActiveHistoryIndex((current) => (current + direction + historyMilestones.length) % historyMilestones.length);
+  };
 
   const ministries = [
     {
@@ -295,69 +341,167 @@ export default function HomePage() {
       </section>
 
       {/* Our History Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-[#dbe5e0]">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="relative overflow-hidden rounded-[2rem] bg-[#151515] px-6 py-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] md:px-10 md:py-10 lg:px-12 lg:py-12"
           >
-            <span className="text-(--color-primary) font-semibold text-sm uppercase tracking-wider">
-              Our Journey
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-2">Our History</h2>
-            <p className="text-(--color-gray-600) mt-4 max-w-2xl mx-auto">
-              From humble beginnings to becoming one of Tanzania&apos;s most beloved gospel choirs
-            </p>
-          </motion.div>
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage: `
+                  radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
+                  linear-gradient(180deg, rgba(255,255,255,0.05), transparent 28%),
+                  linear-gradient(90deg, rgba(255,255,255,0.06), transparent 18%, transparent 82%, rgba(255,255,255,0.06))
+                `
+              }}
+            />
+            <div className="absolute inset-y-0 left-5 hidden w-px bg-white/8 md:block" />
+            <div className="absolute inset-y-0 right-5 hidden w-px bg-white/8 md:block" />
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-(--color-primary)/20 hidden lg:block" />
+            <div className="relative">
+              <div className="flex flex-col gap-6 border-b border-white/10 pb-6 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <span className="text-sm font-medium uppercase tracking-[0.35em] text-white/45">
+                    Our Journey
+                  </span>
+                  <h2 className="mt-3 text-4xl font-bold text-white md:text-5xl">Our History</h2>
+                  <p className="mt-4 max-w-2xl text-base leading-7 text-white/65">
+                    From humble beginnings to becoming one of Tanzania&apos;s most beloved gospel choirs.
+                  </p>
+                </div>
 
-            <div className="space-y-12 lg:space-y-0">
-              {historyMilestones.map((milestone, index) => (
+                <div className="flex items-center gap-3 self-start md:self-auto">
+                  <motion.button
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => stepHistory(-1)}
+                    aria-label="Show previous milestone"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-white/75 transition hover:border-white/35 hover:text-white"
+                  >
+                    <ArrowBack className="h-5 w-5" />
+                  </motion.button>
+                  <motion.button
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => stepHistory(1)}
+                    aria-label="Show next milestone"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 text-white/75 transition hover:border-white/35 hover:text-white"
+                  >
+                    <ArrowForward className="h-5 w-5" />
+                  </motion.button>
+                </div>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.9fr_1fr] lg:items-center">
                 <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative flex items-center lg:justify-${
-                    index % 2 === 0 ? 'start' : 'end'
-                  }`}
+                  key={`history-copy-left-${activeHistoryMilestone.year}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: 'easeOut' }}
                 >
-                  <div className={`lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12'} mb-8 lg:mb-0`}>
-                    <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-(--color-primary) hover:shadow-xl transition-shadow">
-                      <span className="inline-block px-3 py-1 bg-(--color-primary)/10 text-(--color-primary) rounded-full text-sm font-bold mb-2">
-                        {milestone.year}
-                      </span>
-                      <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                      <p className="text-(--color-gray-600)">{milestone.description}</p>
+                  <span className="text-xs uppercase tracking-[0.35em] text-white/40">
+                    Chapter {activeHistoryIndex + 1}
+                  </span>
+                  <h3 className="mt-5 max-w-[8ch] text-5xl font-semibold leading-[0.95] text-white md:text-6xl">
+                    {activeHistoryMilestone.headline}
+                  </h3>
+                  <p className="mt-6 max-w-md text-base leading-8 text-white/72 md:text-lg">
+                    {activeHistoryMilestone.intro}
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  key={`history-image-${activeHistoryMilestone.year}`}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.45, ease: 'easeOut' }}
+                  className="relative mx-auto w-full max-w-sm"
+                >
+                  <div className="absolute inset-0 rounded-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(111,221,213,0.28),transparent_55%)] blur-2xl" />
+                  <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+                    <div className="aspect-[4/5]">
+                      <img
+                        src={activeHistoryMilestone.image}
+                        alt={`${activeHistoryMilestone.year} milestone for ${SITE_NAME}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 to-transparent" />
+                    <div className="absolute bottom-5 left-5 rounded-full border border-white/15 bg-black/35 px-4 py-2 text-sm font-semibold tracking-[0.3em] text-white/85 backdrop-blur-sm">
+                      {activeHistoryMilestone.year}
                     </div>
                   </div>
-                  
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-(--color-primary) rounded-full border-4 border-white shadow-lg hidden lg:block" />
                 </motion.div>
-              ))}
-            </div>
-          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link href="/about">
-              <Button>
-                Read Our Full Story
-                <ChevronRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+                <motion.div
+                  key={`history-copy-right-${activeHistoryMilestone.year}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: 'easeOut', delay: 0.05 }}
+                  className="max-w-xl lg:ml-auto"
+                >
+                  <p className="text-lg leading-8 text-white/78 md:text-[1.35rem] md:leading-9">
+                    {activeHistoryMilestone.description}
+                  </p>
+                  <div className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-[#8fdcd5]">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#8fdcd5]" />
+                    Living the message through music
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="mt-12 border-t border-white/10 pt-8">
+                <div className="relative">
+                  <div className="absolute left-0 right-0 top-5 h-px bg-white/14" />
+
+                  <div className="relative flex flex-wrap items-start justify-between gap-x-4 gap-y-6">
+                    {historyMilestones.map((milestone, index) => {
+                      const isActive = index === activeHistoryIndex;
+
+                      return (
+                        <button
+                          key={milestone.year}
+                          type="button"
+                          onClick={() => setActiveHistoryIndex(index)}
+                          className="group min-w-[72px] bg-transparent text-left"
+                          aria-label={`Show story for ${milestone.year}`}
+                        >
+                          <div className={`text-sm font-semibold transition ${isActive ? 'text-white' : 'text-white/52 group-hover:text-white/85'}`}>
+                            {milestone.year}
+                          </div>
+                          <div className="mt-4 flex justify-center md:justify-start">
+                            <span
+                              className={`block h-3.5 w-3.5 rounded-full border transition ${
+                                isActive
+                                  ? 'border-[#8fdcd5] bg-[#8fdcd5] shadow-[0_0_0_7px_rgba(143,220,213,0.16)]'
+                                  : 'border-white/35 bg-[#151515] group-hover:border-white/70'
+                              }`}
+                            />
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
+                <p className="max-w-xl text-sm leading-7 text-white/55">
+                  Explore the defining moments that shaped our sound, our mission, and our ministry.
+                </p>
+                <Link href="/about">
+                  <Button
+                    variant="outline"
+                    className="border-white/20 text-white hover:bg-white hover:text-[#151515]"
+                  >
+                    Read Our Full Story
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
