@@ -1,0 +1,130 @@
+{
+  "common": {
+    "downloadApp": "Pakua App",
+    "buyMusic": "Nunua Muziki",
+    "buyTicket": "Nunua Tiketi",
+    "bookStudio": "Hifadhi Studio",
+    "bookNow": "Hifadhi Sasa",
+    "learnMore": "Jifunze Zaidi",
+    "listenNow": "Sikiliza Sasa",
+    "preview": "Onyesho",
+    "viewAll": "Angalia Zote",
+    "contactUs": "Wasiliana Nasi"
+  },
+  "nav": {
+    "home": "Nyumbani",
+    "music": "Muziki",
+    "shop": "Duka",
+    "tickets": "Tiketi",
+    "services": "Huduma",
+    "events": "Matukio",
+    "about": "Kuhusu",
+    "language": "Lugha",
+    "adminLogin": "Ingia Admin"
+  },
+  "home": {
+    "heroTitle": "Kwaya ya AIC Chang'ombe (CVC)",
+    "heroSubtitle": "Kuinua Sauti Katika Ibada",
+    "heroDescription": "Furahia nguvu ya muziki wa injili na kwaya bora ya ibada Tanzania. Pakua programu yetu kupata ufikiaji kamili wa maktaba yetu ya muziki.",
+    "latestMusicTitle": "Muziki Mpya",
+    "latestMusicSubtitle": "Sikiliza maonyesho na nunua nyimbo zako za injili unazozipenda",
+    "upcomingEventsTitle": "Matukio Yajayo",
+    "upcomingEventsSubtitle": "Jiunge nasi katika ibada na sherehe"
+  },
+  "music": {
+    "title": "Maktaba ya Muziki",
+    "subtitle": "Tazama mkusanyiko wetu wa muziki wa injili. Onyesho la sekunde 30 au nunua wimbo kamili.",
+    "albumsTab": "Albamu",
+    "songsTab": "Nyimbo",
+    "duration": "Muda",
+    "released": "Ilitolewa",
+    "tracks": "nyimbo"
+  },
+  "services": {
+    "title": "Huduma Zetu",
+    "subtitle": "Kurekodi, ukumbi, usimamizi wa matukio, na huduma za tiketi kwa huduma na jamii yako",
+    "studioTitle": "Studio ya Kurekodi",
+    "studioDescription": "Vifaa vya kitaalamu vya kurekodi na vifaa vya kisasa. Inafaa kwa wasanii wa injili, kwaya, na viongozi wa ibada.",
+    "studioFeatures": [
+      "Kuchanganya na kuboresha kwa kitaalamu",
+      "Wahandisi wa sauti wenye uzoefu",
+      "Mazingira mazuri ya kurekodi",
+      "Bei nafuu kwa saa"
+    ],
+    "studioPricing": "Kuanzia TZS 50,000/saa",
+    "hallTitle": "Ukumbi wa Matukio",
+    "hallDescription": "Ukumbi mkubwa wa matukio unaolingana na tamasha, usiku wa ibada, na matukio ya injili. Umejengwa kikamilifu na mfumo wa sauti na taa.",
+    "hallFeatures": [
+      "Uwezo: Watu 500+",
+      "Mfumo wa sauti wa kitaalamu",
+      "Taa za jukwaa na usanidi",
+      "Mahali pa kuegesha magari"
+    ],
+    "hallPricing": "Kuanzia TZS 500,000/tukio",
+    "eventManagementTitle": "Usimamizi wa Matukio",
+    "eventManagementDescription": "Mipango na uratibu wa mwisho hadi mwisho kwa tamasha za injili, usiku wa ibada, makongamano, na matukio maalum ya kanisa.",
+    "eventManagementFeatures": [
+      "Upangaji wa programu na ratiba ya tukio",
+      "Uratibu wa watoa huduma na usafirishaji",
+      "Uendeshaji wa jukwaa na msaada wa siku ya tukio",
+      "Mratibu maalum wa tukio"
+    ],
+    "eventManagementPricing": "Kuanzia TZS 300,000/tukio",
+    "ticketingTitle": "Huduma za Tiketi",
+    "ticketingDescription": "Usanidi wa tiketi na msaada wa mauzo kwa matukio yako, ikiwemo usambazaji wa mtandaoni na wa ana kwa ana.",
+    "ticketingFeatures": [
+      "Usanidi wa tiketi na mpangilio wa bei",
+      "Usambazaji wa tiketi mtandaoni na wa ana kwa ana",
+      "Uthibitishaji wa kuingia na msaada kwa wageni",
+      "Ufuatiliaji wa mauzo na ripoti ya mahudhurio"
+    ],
+    "ticketingPricing": "Ada ya huduma kuanzia TZS 100,000/tukio"
+  },
+  "events": {
+    "title": "Matukio Yajayo",
+    "subtitle": "Jiunge nasi kwa uzoefu wa ibada yenye nguvu",
+    "getTickets": "Pata Tiketi",
+    "venue": "Mahali",
+    "date": "Tarehe",
+    "time": "Muda",
+    "price": "Bei"
+  },
+  "about": {
+    "title": "Kuhusu Sisi",
+    "subtitle": "Kusambaza injili kupitia muziki tangu 2010",
+    "historyTitle": "Historia Yetu",
+    "historyText": "Kwaya ya AIC Chang'ombe (CVC) ilianzishwa mwaka 2010 huko Dar es Salaam, Tanzania. Kilichoanza kama kikundi kidogo cha viongozi wa ibada wenye shauku kimekua kuwa mojawapo ya kwaya za injili zinazopendwa zaidi Tanzania. Tumetoa albamu nyingi, tumecheza katika matukio makubwa, na tumegusa maisha ya maelfu kupitia huduma yetu ya muziki.",
+    "missionTitle": "Dhamira Yetu",
+    "missionText": "Kusambaza injili ya Yesu Kristo kupitia muziki wenye nguvu wa ibada, kufikia mioyo kote Tanzania na zaidi. Tunapanga kuunda mazingira ya ibada ambayo hubadilisha maisha na kuwaleta watu karibu na Mungu.",
+    "visionTitle": "Dira Yetu",
+    "visionText": "Kuwa kwaya bora ya injili Afrika Mashariki, kuzalisha muziki wa ibada wa kiwango cha kimataifa unaomtukuza Mungu na kuwahamasisha waamini. Tunaona huduma ambayo inawapa nguvu viongozi wa ibada, inasaidia wasanii wa ndani, na kuunda jukwaa endelevu la muziki wa injili Tanzania."
+  },
+  "shop": {
+    "title": "Duka",
+    "subtitle": "Michezo rasmi na bidhaa za kwaya",
+    "searchPlaceholder": "Tafuta bidhaa...",
+    "outOfStock": "Haijapatikana",
+    "noProducts": "Hakuna bidhaa zilizopatikana",
+    "addToCart": "Ongeza kwenye Cart"
+  },
+  "tickets": {
+    "title": "Tiketi",
+    "subtitle": "Pata tiketi za matukio yajayo",
+    "searchPlaceholder": "Tafuta matukio...",
+    "buyTicket": "Nunua Tiketi",
+    "noEvents": "Hakuna matukio yaliyopatikana",
+    "confirmPurchase": "Thibitisha Ununuzi"
+  },
+  "footer": {
+    "tagline": "Kuinua Sauti Katika Ibada",
+    "quickLinks": "Viungo vya Haraka",
+    "followUs": "Tufuate",
+    "contact": "Wasiliana",
+    "address": "Dar es Salaam, Tanzania",
+    "email": "info@capitalvictoirechoir.com",
+    "phone": "+255 XXX XXX XXX",
+    "privacy": "Sera ya Faragha",
+    "terms": "Masharti ya Huduma",
+    "copyright": "© 2024 AIC Chang'ombe Choir (CVC). Haki zote zimehifadhiwa."
+  }
+}

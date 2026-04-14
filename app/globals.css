@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand Colors - Gospel/Spiritual Theme */
+  --color-primary: #6B46C1; /* Deep Purple - Royalty/Spirituality */
+  --color-primary-dark: #553C9A;
+  --color-primary-light: #9F7AEA;
+  
+  --color-secondary: #D69E2E; /* Gold - Glory/Excellence */
+  --color-secondary-dark: #B7791F;
+  --color-secondary-light: #ECC94B;
+  
+  --color-accent: #38B2AC; /* Teal - Life/Renewal */
+  --color-accent-dark: #2C7A7B;
+  --color-accent-light: #81E6D9;
+  
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-gray-50: #F7FAFC;
+  --color-gray-100: #EDF2F7;
+  --color-gray-200: #E2E8F0;
+  --color-gray-300: #CBD5E0;
+  --color-gray-400: #A0AEC0;
+  --color-gray-500: #718096;
+  --color-gray-600: #4A5568;
+  --color-gray-700: #2D3748;
+  --color-gray-800: #1A202C;
+  --color-gray-900: #171923;
+  --color-black: #000000;
+  
+  /* Semantic Colors */
+  --color-success: #48BB78;
+  --color-error: #F56565;
+  --color-warning: #ED8936;
+  --color-info: #4299E1;
+  
+  /* Typography */
+  --font-family-heading: 'Playfair Display', serif;
+  --font-family-body: 'Poppins', sans-serif;
+  
+  /* Spacing */
+  --spacing-section: 5rem;
+  --spacing-section-mobile: 3rem;
+  
+  /* Border Radius */
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+  
+  /* Shadows */
+  --shadow-card: 0 10px 30px -15px rgba(107, 70, 193, 0.3);
+  --shadow-hover: 0 20px 40px -20px rgba(107, 70, 193, 0.4);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-family-body);
+    color: var(--color-gray-800);
+    background: var(--color-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-gray-900);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .container-custom {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .section-padding {
+    padding: var(--spacing-section) 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: var(--spacing-section-mobile) 0;
+    }
+  }
+}
+
+@utility gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+@utility gradient-secondary {
+  background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary-light) 100%);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

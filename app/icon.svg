@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="256" cy="256" r="145" stroke="#2F3192" stroke-width="30"/>
+  <path
+    d="M351 195H218C185.967 195 160 220.967 160 253C160 285.033 185.967 311 218 311H268"
+    stroke="#2F3192"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M187 195C196.523 177.518 214.963 166 236 166H348"
+    stroke="#2F3192"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M270 311H230C194.667 311 166 282.333 166 247C166 211.667 194.667 183 230 183H348"
+    stroke="#2F3192"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <text
+    x="260"
+    y="297"
+    text-anchor="middle"
+    fill="#F89A1C"
+    stroke="#2F3192"
+    stroke-width="4"
+    paint-order="stroke fill"
+    font-family="Arial Black, Arial, sans-serif"
+    font-size="108"
+    font-weight="900"
+    letter-spacing="-6"
+  >
+    CVC
+  </text>
+</svg>
