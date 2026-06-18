@@ -1,0 +1,28 @@
+<section class="section landing-music">
+  <div class="container">
+    <div class="section-heading inline-heading landing-music__heading">
+      <div>
+        <p class="eyebrow">Music</p>
+        <h2>{{ t("home.musicTitle") }}</h2>
+      </div>
+      <a class="text-link" [routerLink]="link('/music')">{{
+        t("common.learnMore")
+      }}</a>
+    </div>
+
+    <div class="card-grid landing-music__grid">
+      @for (song of songs; track song.id) {
+        <article class="card media-card landing-music__card">
+          <img [src]="song.coverImage" [alt]="song.title" class="card-cover" />
+          <div class="card-body">
+            <h3>{{ song.title }}</h3>
+            <p>{{ song.album }} &bull; {{ song.released }}</p>
+            <div class="price-row">
+              <span>{{ song.price }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

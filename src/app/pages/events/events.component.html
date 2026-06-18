@@ -1,0 +1,46 @@
+<section class="page-hero page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">Events</p>
+    <h1>{{ t("events.title") }}</h1>
+    <p class="hero-description">{{ t("events.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container list-stack">
+    @for (event of events; track event.id) {
+      <article class="card event-list-card">
+        <img [src]="event.image" [alt]="event.title" class="event-list-cover" />
+        <div class="event-list-body">
+          <div class="event-pill">
+            {{ formatDate(event.date, "short") }}
+          </div>
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.description }}</p>
+
+          <div class="event-meta-grid">
+            <div>
+              <span>{{ t("events.date") }}</span
+              ><strong>{{ formatDate(event.date, "long") }}</strong>
+            </div>
+            <div>
+              <span>{{ t("events.time") }}</span
+              ><strong>{{ event.time }}</strong>
+            </div>
+            <div>
+              <span>{{ t("events.venue") }}</span
+              ><strong>{{ event.venue }}</strong>
+            </div>
+          </div>
+
+          <div class="price-row">
+            <strong>{{ event.price }}</strong>
+            <button type="button" class="btn btn-primary">
+              {{ t("events.getTickets") }}
+            </button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

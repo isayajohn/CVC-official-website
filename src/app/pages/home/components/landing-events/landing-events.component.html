@@ -1,0 +1,32 @@
+<section class="section section-muted landing-events">
+  <div class="container">
+    <div class="section-heading inline-heading landing-events__heading">
+      <div>
+        <p class="eyebrow">Events</p>
+        <h2>{{ t("home.eventsTitle") }}</h2>
+      </div>
+      <a class="text-link" [routerLink]="link('/events')">{{
+        t("common.buyTicket")
+      }}</a>
+    </div>
+
+    <div class="card-grid landing-events__grid">
+      @for (event of events; track event.id) {
+        <article class="card event-card landing-events__card">
+          <img [src]="event.image" [alt]="event.title" class="card-cover" />
+          <div class="card-body">
+            <p class="eyebrow">{{ formatDate(event.date) }}</p>
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.venue }}</p>
+            <div class="price-row">
+              <span>{{ event.price }}</span>
+              <a class="text-link" [routerLink]="link('/tickets')">{{
+                t("common.buyTicket")
+              }}</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.landing-hero {
+  background: url("/images/pexels/hero.jpg") center/cover no-repeat;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 5.5rem;
+  padding-bottom: 5rem;
+
+  &__copy {
+    max-width: 58rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .landing-hero {
+    min-height: 80vh;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+}

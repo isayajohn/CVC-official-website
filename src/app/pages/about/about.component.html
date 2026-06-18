@@ -1,0 +1,82 @@
+<section class="hero hero-about page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">About</p>
+    <h1>{{ t("about.title") }}</h1>
+    <p class="hero-description">{{ t("about.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split-section">
+    <div>
+      <p class="eyebrow">{{ t("about.historyTitle") }}</p>
+      <h2>{{ t("about.historyTitle") }}</h2>
+      <p class="section-copy">{{ t("about.historyText") }}</p>
+    </div>
+    <div class="image-panel">
+      <img src="/images/pexels/about.jpg" alt="Choir group" />
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container card-grid card-grid-2">
+    <article class="card">
+      <p class="eyebrow">{{ t("about.missionTitle") }}</p>
+      <h3>{{ t("about.missionTitle") }}</h3>
+      <p>{{ t("about.missionText") }}</p>
+    </article>
+    <article class="card">
+      <p class="eyebrow">{{ t("about.visionTitle") }}</p>
+      <h3>{{ t("about.visionTitle") }}</h3>
+      <p>{{ t("about.visionText") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Leadership</p>
+      <h2>{{ t("about.leadersTitle") }}</h2>
+    </div>
+
+    <div class="card-grid card-grid-4">
+      @for (leader of leaders; track leader.name) {
+        <article class="card media-card">
+          <img
+            [src]="leader.image"
+            [alt]="leader.name"
+            class="card-cover portrait-cover"
+          />
+          <div class="card-body">
+            <h3>{{ leader.name }}</h3>
+            <p>{{ leader.role }}</p>
+            <p>{{ leader.bio }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Timeline</p>
+      <h2>Milestones</h2>
+    </div>
+    <div class="list-stack">
+      @for (item of milestones; track item.year) {
+        <article class="card event-list-card">
+          <img [src]="item.image" [alt]="item.headline" class="event-list-cover" />
+          <div class="event-list-body">
+            <div class="event-pill">{{ item.year }}</div>
+            <h3>{{ item.headline }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

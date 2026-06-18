@@ -1,0 +1,113 @@
+<section class="page-hero page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">Tickets</p>
+    <h1>{{ t("tickets.title") }}</h1>
+    <p class="hero-description">{{ t("tickets.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar">
+      <input
+        class="input"
+        [placeholder]="t('tickets.searchPlaceholder')"
+        [(ngModel)]="searchQuery"
+      />
+      <div class="chip-row">
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="chip chip-button"
+            [class.is-active]="selectedCategory === category"
+            (click)="selectedCategory = category"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      @for (event of filteredEvents(); track event.id) {
+        <article class="card media-card">
+          <img [src]="event.image" [alt]="event.name" class="card-cover" />
+          <div class="card-body">
+            <p class="eyebrow">{{ event.category }}</p>
+            <h3>{{ event.name }}</h3>
+            <p>{{ event.description }}</p>
+            <p>{{ formatDate(event.date) }} • {{ event.time }}</p>
+            <p>{{ event.venue }}</p>
+            <div class="price-row">
+              <strong>{{
+                event.price === 0 ? "FREE" : formatCurrency(event.price)
+              }}</strong>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="selectEvent(event)"
+              >
+                {{ t("common.buyTicket") }}
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (filteredEvents().length === 0) {
+      <div class="empty-state">{{ t("tickets.noEvents") }}</div>
+    }
+
+    @if (selectedEvent) {
+      <div class="booking-panel">
+        <div>
+          <p class="eyebrow">Checkout</p>
+          <h2>{{ selectedEvent.name }}</h2>
+          <p>
+            {{ formatDate(selectedEvent.date) }} • {{ selectedEvent.venue }}
+          </p>
+        </div>
+
+        <label class="field">
+          <span>{{ t("tickets.quantity") }}</span>
+          <input
+            class="input"
+            type="number"
+            min="1"
+            [max]="selectedEvent.availableTickets"
+            [(ngModel)]="ticketQuantity"
+          />
+        </label>
+
+        <div class="price-row">
+          <strong>
+            {{
+              selectedEvent.price === 0 ? "FREE" : formatCurrency(ticketTotal())
+            }}
+          </strong>
+          <div class="button-row">
+            <button
+              type="button"
+              class="btn btn-ghost"
+              (click)="selectedEvent = null"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="confirmPurchase()"
+            >
+              {{ t("tickets.confirmPurchase") }}
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (statusMessage) {
+      <div class="status-banner success-banner">{{ statusMessage }}</div>
+    }
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<section class="section landing-journey">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Journey</p>
+      <h2>{{ t("home.historyTitle") }}</h2>
+    </div>
+
+    <div class="timeline-grid landing-journey__grid">
+      @for (item of milestones; track item.year) {
+        <article class="timeline-card landing-journey__card">
+          <img [src]="item.image" [alt]="item.headline" />
+          <div>
+            <p class="eyebrow">{{ item.year }}</p>
+            <h3>{{ item.headline }}</h3>
+            <p>{{ item.intro }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

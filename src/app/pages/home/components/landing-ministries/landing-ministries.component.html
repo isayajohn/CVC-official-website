@@ -1,0 +1,20 @@
+<section class="section section-muted landing-ministries">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Ministry Focus</p>
+      <h2>{{ t("home.ministriesTitle") }}</h2>
+    </div>
+
+    <div class="card-grid landing-ministries__grid">
+      @for (item of ministries; track item.title) {
+        <article class="card landing-ministries__card">
+          <span class="material-symbols-outlined section-icon">{{
+            item.icon
+          }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

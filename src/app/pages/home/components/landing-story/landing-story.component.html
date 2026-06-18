@@ -1,0 +1,23 @@
+<section class="section landing-story">
+  <div class="container landing-story__grid">
+    <div class="landing-story__copy">
+      <p class="eyebrow">Our Story</p>
+      <h2>{{ t("home.storyTitle") }}</h2>
+      <p class="section-copy">{{ t("home.storyText") }}</p>
+      <div class="chip-row">
+        <span class="chip">Worship</span>
+        <span class="chip">Choir Training</span>
+        <span class="chip">Events</span>
+        <span class="chip">Recording</span>
+      </div>
+      <div class="button-row landing-story__cta">
+        <a class="btn btn-ghost" [routerLink]="link('/about')">{{
+          t("common.learnMore")
+        }}</a>
+      </div>
+    </div>
+    <div class="image-panel landing-story__image">
+      <img src="/images/pexels/hero.jpg" alt="Choir performance" />
+    </div>
+  </div>
+</section>

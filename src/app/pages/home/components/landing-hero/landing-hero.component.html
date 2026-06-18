@@ -1,0 +1,40 @@
+<section class="hero page-shell landing-hero">
+  <div class="container">
+    <div class="hero-copy landing-hero__copy">
+      <p class="eyebrow">Choir Ministry</p>
+      <h1>{{ t("home.heroTitle") }}</h1>
+      <p class="hero-subtitle">{{ t("home.heroSubtitle") }}</p>
+      <p class="hero-description">{{ t("home.heroDescription") }}</p>
+      <div class="button-row">
+        <a class="btn btn-primary" [routerLink]="link('/music')">{{
+          t("common.listenNow")
+        }}</a>
+        <a class="btn btn-secondary" [routerLink]="link('/about')">{{
+          t("common.learnMore")
+        }}</a>
+      </div>
+      <div class="hero-stat-strip">
+        <div class="hero-stat-strip__item">
+          <strong>15+</strong>
+          <span>Years of Ministry</span>
+        </div>
+        <div class="hero-stat-strip__item">
+          <strong>50+</strong>
+          <span>Choir Members</span>
+        </div>
+        <div class="hero-stat-strip__item">
+          <strong>3</strong>
+          <span>Albums Released</span>
+        </div>
+        <div class="hero-stat-strip__item">
+          <strong>100+</strong>
+          <span>Events Performed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span class="material-symbols-outlined">keyboard_arrow_down</span>
+    <span>Scroll</span>
+  </div>
+</section>

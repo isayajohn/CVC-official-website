@@ -1,0 +1,61 @@
+<section class="page-hero page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">Shop</p>
+    <h1>{{ t("shop.title") }}</h1>
+    <p class="hero-description">{{ t("shop.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar">
+      <input
+        class="input"
+        [placeholder]="t('shop.searchPlaceholder')"
+        [(ngModel)]="searchQuery"
+      />
+      <div class="chip-row">
+        @for (category of categories; track category) {
+          <button
+            type="button"
+            class="chip chip-button"
+            [class.is-active]="selectedCategory === category"
+            (click)="selectedCategory = category"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-4">
+      @for (product of filteredProducts(); track product.id) {
+        <article class="card media-card">
+          <img [src]="product.image" [alt]="product.name" class="card-cover" />
+          <div class="card-body">
+            <p class="eyebrow">{{ product.category }}</p>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="stars">★★★★★</div>
+            <div class="price-row">
+              <strong>{{ formatCurrency(product.price) }}</strong>
+              <button
+                type="button"
+                class="btn btn-primary"
+                [disabled]="!product.inStock"
+              >
+                {{
+                  product.inStock ? t("shop.addToCart") : t("shop.outOfStock")
+                }}
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (filteredProducts().length === 0) {
+      <div class="empty-state">{{ t("shop.noProducts") }}</div>
+    }
+  </div>
+</section>

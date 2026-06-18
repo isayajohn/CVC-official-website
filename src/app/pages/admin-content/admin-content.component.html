@@ -1,0 +1,153 @@
+@if (draft) {
+  <section class="admin-surface">
+    <p class="eyebrow">Content</p>
+    <h2>{{ t("admin.contentManager") }}</h2>
+    <p>Editing locale: {{ currentLocale.toUpperCase() }}</p>
+  </section>
+
+  @if (statusMessage) {
+    <div
+      class="status-banner"
+      [class.success-banner]="statusType === 'success'"
+      [class.error-banner]="statusType === 'error'"
+    >
+      {{ statusMessage }}
+    </div>
+  }
+
+  <section class="card form-card">
+    <h3>{{ t("admin.siteContact") }}</h3>
+    <div class="form-grid">
+      <label class="field">
+        <span>Phone</span>
+        <input class="input" [(ngModel)]="draft.site.phone" name="phone" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input class="input" [(ngModel)]="draft.site.email" name="email" />
+      </label>
+      <label class="field field-full">
+        <span>Address</span>
+        <input class="input" [(ngModel)]="draft.site.address" name="address" />
+      </label>
+      <label class="field">
+        <span>Facebook</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.site.socials.facebook"
+          name="facebook"
+        />
+      </label>
+      <label class="field">
+        <span>Instagram</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.site.socials.instagram"
+          name="instagram"
+        />
+      </label>
+      <label class="field">
+        <span>YouTube</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.site.socials.youtube"
+          name="youtube"
+        />
+      </label>
+    </div>
+  </section>
+
+  <section class="card form-card">
+    <h3>{{ t("admin.servicesLabel") }} ({{ currentLocale.toUpperCase() }})</h3>
+    <div class="form-grid">
+      <label class="field field-full">
+        <span>{{ t("admin.servicesSubtitle") }}</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.services[currentLocale].subtitle"
+          name="subtitle"
+        />
+      </label>
+      <label class="field">
+        <span>{{ t("admin.ctaTitle") }}</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.services[currentLocale].ctaTitle"
+          name="ctaTitle"
+        />
+      </label>
+      <label class="field field-full">
+        <span>{{ t("admin.ctaDescription") }}</span>
+        <textarea
+          class="textarea"
+          [(ngModel)]="draft.services[currentLocale].ctaDescription"
+          name="ctaDescription"
+        ></textarea>
+      </label>
+    </div>
+
+    <div class="admin-service-stack">
+      @for (
+        item of draft.services[currentLocale].items;
+        track item.id;
+        let index = $index
+      ) {
+        <article class="card service-editor-card">
+          <div class="form-grid">
+            <label class="field">
+              <span>Title</span>
+              <input
+                class="input"
+                [(ngModel)]="item.title"
+                [name]="'title-' + index"
+              />
+            </label>
+            <label class="field">
+              <span>Pricing</span>
+              <input
+                class="input"
+                [(ngModel)]="item.pricing"
+                [name]="'pricing-' + index"
+              />
+            </label>
+            <label class="field field-full">
+              <span>Description</span>
+              <textarea
+                class="textarea"
+                [(ngModel)]="item.description"
+                [name]="'description-' + index"
+              ></textarea>
+            </label>
+            <label class="field field-full">
+              <span>Features</span>
+              <textarea
+                class="textarea mono-textarea"
+                [ngModel]="
+                  item.features.join(
+                    '
+'
+                  )
+                "
+                (ngModelChange)="updateFeatures(index, $event)"
+                [name]="'features-' + index"
+              ></textarea>
+            </label>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <div class="button-row end-row">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="isSaving"
+      (click)="save()"
+    >
+      {{ isSaving ? t("common.loading") : t("common.save") }}
+    </button>
+  </div>
+} @else {
+  <div class="empty-state">{{ t("common.loading") }}</div>
+}

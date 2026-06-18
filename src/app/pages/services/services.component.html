@@ -1,0 +1,52 @@
+<section class="page-hero page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">Services</p>
+    <h1>{{ t("services.title") }}</h1>
+    <p class="hero-description">{{ serviceContent().subtitle }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container card-grid card-grid-2">
+    @for (service of serviceContent().items; track service.id) {
+      <article class="card service-card">
+        <img
+          [src]="service.image"
+          [alt]="service.title"
+          class="card-cover tall-cover"
+        />
+        <div class="card-body">
+          <div class="service-title">
+            <span class="material-symbols-outlined section-icon">{{
+              iconFor(service.icon)
+            }}</span>
+            <h3>{{ service.title }}</h3>
+          </div>
+          <p>{{ service.description }}</p>
+          <ul class="feature-list">
+            @for (feature of service.features; track feature) {
+              <li>{{ feature }}</li>
+            }
+          </ul>
+          <div class="price-row">
+            <strong>{{ service.pricing }}</strong>
+            <button type="button" class="btn btn-primary">
+              {{ t("common.bookNow") }}
+            </button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container narrow-copy centered-copy">
+    <p class="eyebrow">Contact</p>
+    <h2>{{ serviceContent().ctaTitle }}</h2>
+    <p class="section-copy">{{ serviceContent().ctaDescription }}</p>
+    <button type="button" class="btn btn-secondary">
+      {{ t("common.contactUs") }}
+    </button>
+  </div>
+</section>

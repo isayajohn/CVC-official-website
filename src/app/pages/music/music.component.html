@@ -1,0 +1,89 @@
+<section class="page-hero page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">Music</p>
+    <h1>{{ t("music.title") }}</h1>
+    <p class="hero-description">{{ t("music.subtitle") }}</p>
+    <p class="hero-note">{{ t("music.previewOnly") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tab-row">
+      <button
+        type="button"
+        class="tab-button"
+        [class.is-active]="tab() === 'songs'"
+        (click)="tab.set('songs')"
+      >
+        {{ t("music.songsTab") }}
+      </button>
+      <button
+        type="button"
+        class="tab-button"
+        [class.is-active]="tab() === 'albums'"
+        (click)="tab.set('albums')"
+      >
+        {{ t("music.albumsTab") }}
+      </button>
+    </div>
+
+    @if (tab() === "songs") {
+      <div class="list-stack">
+        @for (song of songs; track song.id) {
+          <article class="card list-card">
+            <img
+              [src]="song.coverImage"
+              [alt]="song.title"
+              class="mini-cover"
+            />
+            <div class="list-card-copy">
+              <h3>{{ song.title }}</h3>
+              <p>{{ song.album }}</p>
+              <app-audio-player
+                [src]="song.audioPreview"
+                [title]="song.title"
+                [maxDuration]="30"
+              />
+              <small
+                >{{ t("music.duration") }}: {{ song.duration }} •
+                {{ t("music.released") }}: {{ song.released }}</small
+              >
+            </div>
+            <div class="list-card-aside">
+              <strong>{{ song.price }}</strong>
+              <button type="button" class="btn btn-primary">
+                {{ t("common.buyMusic") }}
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="card-grid card-grid-3">
+        @for (album of albums; track album.id) {
+          <article class="card media-card">
+            <img
+              [src]="album.coverImage"
+              [alt]="album.title"
+              class="card-cover"
+            />
+            <div class="card-body">
+              <h3>{{ album.title }}</h3>
+              <p>
+                {{ album.tracks }} {{ t("music.tracks") }} •
+                {{ album.released }}
+              </p>
+              <div class="price-row">
+                <span>{{ album.price }}</span>
+                <button type="button" class="btn btn-primary">
+                  {{ t("common.buyMusic") }}
+                </button>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>

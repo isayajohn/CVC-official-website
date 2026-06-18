@@ -1,0 +1,42 @@
+<section class="admin-surface">
+  <p class="eyebrow">Overview</p>
+  <h2>{{ t("admin.welcome") }}</h2>
+  <p>{{ t("admin.welcomeSubtitle") }}</p>
+</section>
+
+<section class="stats-grid">
+  <article class="card stat-card">
+    <span>Services</span>
+    <strong>{{ servicesCount() }}</strong>
+  </article>
+  <article class="card stat-card">
+    <span>Locale</span>
+    <strong>{{ locale().toUpperCase() }}</strong>
+  </article>
+  <article class="card stat-card">
+    <span>Contact Email</span>
+    <strong>{{ site().email }}</strong>
+  </article>
+</section>
+
+<section class="card-grid card-grid-2">
+  <article class="card">
+    <p class="eyebrow">Next Step</p>
+    <h3>{{ t("admin.contentManager") }}</h3>
+    <p>
+      Update service cards, CTA copy, and contact details used across the public
+      site.
+    </p>
+    <a class="btn btn-primary" [routerLink]="link('/admin/content')">{{
+      t("admin.contentManager")
+    }}</a>
+  </article>
+
+  <article class="card">
+    <p class="eyebrow">Live Site</p>
+    <h3>Current Contact Details</h3>
+    <p>{{ site().phone }}</p>
+    <p>{{ site().email }}</p>
+    <p>{{ site().address }}</p>
+  </article>
+</section>
