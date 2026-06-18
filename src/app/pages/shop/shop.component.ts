@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { PRODUCTS } from "../../core/site.data";
 import { TranslationService } from "../../core/translation.service";
@@ -10,6 +10,7 @@ import { TranslationService } from "../../core/translation.service";
   imports: [CommonModule, FormsModule],
   templateUrl: "./shop.component.html",
   styleUrl: "./shop.component.scss",
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShopPageComponent {
   readonly products = PRODUCTS;

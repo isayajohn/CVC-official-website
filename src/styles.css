@@ -1,3 +1,4 @@
+@import "@awesome.me/webawesome/dist/styles/themes/awesome.css";
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -283,6 +284,10 @@ p {
   flex: 0 0 44px;
 }
 
+.icon-button.mobile-toggle {
+  display: none;
+}
+
 .mobile-nav {
   display: none;
 }
@@ -469,16 +474,29 @@ p {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.62);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
+  justify-content: center;
+  gap: 0.2rem;
   font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   animation: hint-bounce 2.8s ease-in-out infinite;
   pointer-events: none;
+  line-height: 1;
+  text-align: center;
+}
+
+.scroll-hint__label {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.scroll-hint__icon {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 @keyframes hint-bounce {
@@ -695,6 +713,57 @@ p {
 .card-grid-4,
 .stats-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.shop-wa-grid {
+  align-items: stretch;
+}
+
+.card-overview {
+  width: 100%;
+  height: 100%;
+  --spacing: 1rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-overview::part(media) {
+  overflow: hidden;
+}
+
+.card-overview::part(body) {
+  display: block;
+}
+
+.card-overview::part(footer) {
+  align-items: center;
+}
+
+.shop-product-card__media {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.shop-product-card__body {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.shop-product-card__body strong {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.shop-product-card__body p:not(.eyebrow) {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.shop-product-card__body small {
+  color: var(--color-primary);
+  font-weight: 800;
 }
 
 .card {
@@ -1290,6 +1359,10 @@ p {
 
   .mobile-toggle,
   .mobile-nav {
+    display: inline-flex;
+  }
+
+  .icon-button.mobile-toggle {
     display: inline-flex;
   }
 

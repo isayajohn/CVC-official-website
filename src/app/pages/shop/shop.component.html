@@ -28,29 +28,51 @@
       </div>
     </div>
 
-    <div class="card-grid card-grid-4">
+    <div class="card-grid card-grid-4 shop-wa-grid">
       @for (product of filteredProducts(); track product.id) {
-        <article class="card media-card">
-          <img [src]="product.image" [alt]="product.name" class="card-cover" />
-          <div class="card-body">
+        <wa-card
+          class="card-overview shop-product-card"
+          appearance="outlined"
+          with-media
+          with-footer
+          with-footer-actions
+        >
+          <img
+            slot="media"
+            [src]="product.image"
+            [alt]="product.name"
+            class="shop-product-card__media"
+          />
+
+          <div class="shop-product-card__body">
             <p class="eyebrow">{{ product.category }}</p>
-            <h3>{{ product.name }}</h3>
+            <strong>{{ product.name }}</strong>
             <p>{{ product.description }}</p>
-            <div class="stars">★★★★★</div>
-            <div class="price-row">
-              <strong>{{ formatCurrency(product.price) }}</strong>
-              <button
-                type="button"
-                class="btn btn-primary"
-                [disabled]="!product.inStock"
-              >
-                {{
-                  product.inStock ? t("shop.addToCart") : t("shop.outOfStock")
-                }}
-              </button>
-            </div>
+            <small class="wa-caption-s">{{ formatCurrency(product.price) }}</small>
           </div>
-        </article>
+
+          <wa-button
+            slot="footer"
+            variant="brand"
+            pill
+            with-start
+            [attr.disabled]="!product.inStock ? '' : null"
+          >
+            <wa-icon
+              slot="start"
+              name="bag-shopping"
+              family="utility"
+              variant="semibold"
+            ></wa-icon>
+            {{ product.inStock ? t("shop.addToCart") : t("shop.outOfStock") }}
+          </wa-button>
+          <wa-rating
+            slot="footer-actions"
+            [attr.label]="'Rating for ' + product.name"
+            [attr.value]="product.rating"
+            readonly
+          ></wa-rating>
+        </wa-card>
       }
     </div>
 

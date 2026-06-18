@@ -18,6 +18,12 @@
 
   &__image {
     min-height: 460px;
+
+    img {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
   }
 
   &__cta {
