@@ -23,6 +23,7 @@ export const MESSAGES = {
       services: "Services",
       events: "Events",
       about: "About",
+      contact: "Contact",
       adminLogin: "Admin Login",
       getTickets: "Get Tickets",
     },
@@ -78,6 +79,30 @@ export const MESSAGES = {
       visionText:
         "To be a leading gospel choir in East Africa, producing world-class worship music and empowering the next generation of worship leaders.",
       leadersTitle: "Leadership Team",
+    },
+    contact: {
+      eyebrow: "Contact Us",
+      title: "Let’s connect",
+      subtitle:
+        "Reach the choir for bookings, ministry invitations, music questions, and partnership conversations.",
+      detailsEyebrow: "Reach Us",
+      detailsTitle: "We would love to hear from you",
+      detailsText:
+        "Send a message or use the direct contacts below. Our team will help you find the right next step.",
+      phone: "Phone",
+      email: "Email",
+      location: "Location",
+      formEyebrow: "Message",
+      formTitle: "Send an inquiry",
+      name: "Name",
+      emailAddress: "Email address",
+      subject: "Subject",
+      message: "Message",
+      send: "Send Message",
+      visitEyebrow: "Visit",
+      visitTitle: "Worship with us in Dar es Salaam",
+      visitText:
+        "Come experience the sound, fellowship, and ministry heart of AIC Chang'ombe Choir.",
     },
     shop: {
       title: "Shop",
@@ -158,6 +183,7 @@ export const MESSAGES = {
       services: "Huduma",
       events: "Matukio",
       about: "Kuhusu",
+      contact: "Mawasiliano",
       adminLogin: "Ingia Admin",
       getTickets: "Pata Tiketi",
     },
@@ -213,6 +239,30 @@ export const MESSAGES = {
       visionText:
         "Kuwa kwaya inayoongoza ya injili Afrika Mashariki, ikitengeneza muziki wa ibada wa kiwango cha juu na kukuza kizazi kipya cha viongozi wa ibada.",
       leadersTitle: "Timu ya Uongozi",
+    },
+    contact: {
+      eyebrow: "Wasiliana Nasi",
+      title: "Tuwasiliane",
+      subtitle:
+        "Wasiliana na kwaya kwa ajili ya huduma, mialiko, maswali ya muziki, na ushirikiano.",
+      detailsEyebrow: "Tupate",
+      detailsTitle: "Tungependa kusikia kutoka kwako",
+      detailsText:
+        "Tuma ujumbe au tumia mawasiliano yaliyopo hapa chini. Timu yetu itakusaidia hatua inayofuata.",
+      phone: "Simu",
+      email: "Barua pepe",
+      location: "Mahali",
+      formEyebrow: "Ujumbe",
+      formTitle: "Tuma maulizo",
+      name: "Jina",
+      emailAddress: "Barua pepe",
+      subject: "Kichwa cha ujumbe",
+      message: "Ujumbe",
+      send: "Tuma Ujumbe",
+      visitEyebrow: "Tembelea",
+      visitTitle: "Abudu nasi Dar es Salaam",
+      visitText:
+        "Karibu ujionee sauti, ushirika, na moyo wa huduma wa Kwaya ya AIC Chang'ombe.",
     },
     shop: {
       title: "Duka",

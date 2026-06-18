@@ -5,6 +5,7 @@ import { AboutPageComponent } from "./pages/about/about.component";
 import { AdminContentPageComponent } from "./pages/admin-content/admin-content.component";
 import { AdminDashboardPageComponent } from "./pages/admin-dashboard/admin-dashboard.component";
 import { AdminLoginPageComponent } from "./pages/admin-login/admin-login.component";
+import { ContactPageComponent } from "./pages/contact/contact.component";
 import { EventsPageComponent } from "./pages/events/events.component";
 import { HomePageComponent } from "./pages/home/home.component";
 import { MusicPageComponent } from "./pages/music/music.component";
@@ -37,6 +38,7 @@ export const routes: Routes = [
       { path: "services", component: ServicesPageComponent },
       { path: "events", component: EventsPageComponent },
       { path: "about", component: AboutPageComponent },
+      { path: "contact", component: ContactPageComponent },
     ],
   },
   { path: "**", redirectTo: "en" },

@@ -276,8 +276,7 @@ export const HISTORY_MILESTONES: Milestone[] = [
       "A few committed voices started meeting in Dar es Salaam with one desire: to sing the gospel with honesty and excellence.",
     description:
       "Those early sessions shaped the choir’s sound, discipline, and ministry focus.",
-    image:
-      "https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "/images/cvc/journey-2010.jpg",
   },
   {
     year: "2015",
@@ -286,8 +285,7 @@ export const HISTORY_MILESTONES: Milestone[] = [
       "Local ministry expanded into national tours and larger worship gatherings.",
     description:
       "The choir learned how to serve different churches, regions, and stories while staying rooted in the same gospel message.",
-    image:
-      "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "/images/cvc/journey-2015.jpg",
   },
   {
     year: "2024",
@@ -295,8 +293,7 @@ export const HISTORY_MILESTONES: Milestone[] = [
     intro: "New invitations across East Africa expanded the choir’s reach.",
     description:
       "A wider stage came with a clearer mission: worship deeply and serve people faithfully.",
-    image:
-      "https://images.pexels.com/photos/236339/pexels-photo-236339.jpeg?auto=compress&cs=tinysrgb&w=900",
+    image: "/images/cvc/journey-2024.jpg",
   },
 ];
 

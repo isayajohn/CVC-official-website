@@ -29,15 +29,15 @@
     </div>
 
     @if (tab() === "songs") {
-      <div class="list-stack">
+      <div class="card-grid music-grid">
         @for (song of songs; track song.id) {
-          <article class="card list-card">
+          <article class="card media-card music-card">
             <img
               [src]="song.coverImage"
               [alt]="song.title"
-              class="mini-cover"
+              class="card-cover music-card__cover"
             />
-            <div class="list-card-copy">
+            <div class="card-body music-card__body">
               <h3>{{ song.title }}</h3>
               <p>{{ song.album }}</p>
               <app-audio-player
@@ -49,33 +49,33 @@
                 >{{ t("music.duration") }}: {{ song.duration }} •
                 {{ t("music.released") }}: {{ song.released }}</small
               >
-            </div>
-            <div class="list-card-aside">
-              <strong>{{ song.price }}</strong>
-              <button type="button" class="btn btn-primary">
-                {{ t("common.buyMusic") }}
-              </button>
+              <div class="music-card__footer">
+                <strong>{{ song.price }}</strong>
+                <button type="button" class="btn btn-primary">
+                  {{ t("common.buyMusic") }}
+                </button>
+              </div>
             </div>
           </article>
         }
       </div>
     } @else {
-      <div class="card-grid card-grid-3">
+      <div class="card-grid music-grid">
         @for (album of albums; track album.id) {
-          <article class="card media-card">
+          <article class="card media-card music-card">
             <img
               [src]="album.coverImage"
               [alt]="album.title"
-              class="card-cover"
+              class="card-cover music-card__cover"
             />
-            <div class="card-body">
+            <div class="card-body music-card__body">
               <h3>{{ album.title }}</h3>
               <p>
                 {{ album.tracks }} {{ t("music.tracks") }} •
                 {{ album.released }}
               </p>
-              <div class="price-row">
-                <span>{{ album.price }}</span>
+              <div class="music-card__footer">
+                <strong>{{ album.price }}</strong>
                 <button type="button" class="btn btn-primary">
                   {{ t("common.buyMusic") }}
                 </button>

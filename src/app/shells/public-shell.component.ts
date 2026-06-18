@@ -247,6 +247,7 @@ export class PublicShellComponent {
     { path: this.link("/services"), label: this.t("nav.services"), exact: false },
     { path: this.link("/events"), label: this.t("nav.events"), exact: false },
     { path: this.link("/about"), label: this.t("nav.about"), exact: false },
+    { path: this.link("/contact"), label: this.t("nav.contact"), exact: false },
   ]);
 
   readonly siteName = SITE_SHORT_NAME;

@@ -3,7 +3,7 @@
 }
 
 .landing-hero {
-  background: url("/images/pexels/hero.jpg") center/cover no-repeat;
+  background: #101427;
   min-height: 92vh;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,65 @@
   padding-top: 5.5rem;
   padding-bottom: 5rem;
 
+  &::before {
+    z-index: 1;
+  }
+
+  > .container,
+  .scroll-hint {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 0.8s ease, transform 6s ease;
+  }
+
+  &__slide.is-active {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
   &__copy {
     max-width: 58rem;
+  }
+
+  &__controls {
+    position: absolute;
+    left: 50%;
+    bottom: 5.75rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.65rem;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    width: 44px;
+    height: 4px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.34);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease, width 0.25s ease;
+  }
+
+  &__dot.is-active {
+    width: 64px;
+    background: var(--color-secondary);
   }
 }
 
@@ -21,5 +78,17 @@
     min-height: 80vh;
     padding-top: 4rem;
     padding-bottom: 3rem;
+
+    &__controls {
+      bottom: 4.75rem;
+    }
+
+    &__dot {
+      width: 32px;
+    }
+
+    &__dot.is-active {
+      width: 48px;
+    }
   }
 }

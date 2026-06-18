@@ -1,0 +1,112 @@
+<section class="page-hero page-shell contact-hero">
+  <div class="container narrow-copy">
+    <p class="eyebrow">{{ t("contact.eyebrow") }}</p>
+    <h1>{{ t("contact.title") }}</h1>
+    <p class="hero-description">{{ t("contact.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div class="contact-panel">
+      <p class="eyebrow">{{ t("contact.detailsEyebrow") }}</p>
+      <h2>{{ t("contact.detailsTitle") }}</h2>
+      <p class="section-copy">{{ t("contact.detailsText") }}</p>
+
+      <div class="contact-methods">
+        <a class="contact-method" [href]="'tel:' + site().phone">
+          <span class="material-symbols-outlined">phone</span>
+          <div>
+            <strong>{{ t("contact.phone") }}</strong>
+            <p>{{ site().phone }}</p>
+          </div>
+        </a>
+
+        <a class="contact-method" [href]="'mailto:' + site().email">
+          <span class="material-symbols-outlined">mail</span>
+          <div>
+            <strong>{{ t("contact.email") }}</strong>
+            <p>{{ site().email }}</p>
+          </div>
+        </a>
+
+        <div class="contact-method">
+          <span class="material-symbols-outlined">location_on</span>
+          <div>
+            <strong>{{ t("contact.location") }}</strong>
+            <p>{{ site().address }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-socials">
+        <a
+          [href]="site().socials.facebook"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Facebook"
+        >
+          <span class="material-symbols-outlined">public</span>
+        </a>
+        <a
+          [href]="site().socials.instagram"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+        >
+          <span class="material-symbols-outlined">photo_camera</span>
+        </a>
+        <a
+          [href]="site().socials.youtube"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="YouTube"
+        >
+          <span class="material-symbols-outlined">play_circle</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="card contact-form" (submit)="$event.preventDefault()">
+      <p class="eyebrow">{{ t("contact.formEyebrow") }}</p>
+      <h2>{{ t("contact.formTitle") }}</h2>
+
+      <label class="field">
+        <span>{{ t("contact.name") }}</span>
+        <input class="input" type="text" autocomplete="name" />
+      </label>
+
+      <label class="field">
+        <span>{{ t("contact.emailAddress") }}</span>
+        <input class="input" type="email" autocomplete="email" />
+      </label>
+
+      <label class="field">
+        <span>{{ t("contact.subject") }}</span>
+        <input class="input" type="text" />
+      </label>
+
+      <label class="field">
+        <span>{{ t("contact.message") }}</span>
+        <textarea class="input textarea" rows="6"></textarea>
+      </label>
+
+      <button type="submit" class="btn btn-primary">
+        {{ t("contact.send") }}
+      </button>
+    </form>
+  </div>
+</section>
+
+<section class="section section-muted contact-visit-section">
+  <div class="container contact-visit">
+    <div>
+      <p class="eyebrow">{{ t("contact.visitEyebrow") }}</p>
+      <h2>{{ t("contact.visitTitle") }}</h2>
+      <p class="section-copy">{{ t("contact.visitText") }}</p>
+    </div>
+    <div class="contact-visit__image">
+      <img src="/images/cvc/about-history.jpg" alt="CVC choir ministry" />
+    </div>
+  </div>
+</section>

@@ -14,19 +14,19 @@
       <p class="section-copy">{{ t("about.historyText") }}</p>
     </div>
     <div class="image-panel">
-      <img src="/images/pexels/about.jpg" alt="Choir group" />
+      <img src="/images/cvc/about-history.jpg" alt="CVC choir worshiping" />
     </div>
   </div>
 </section>
 
 <section class="section section-muted">
-  <div class="container card-grid card-grid-2">
-    <article class="card">
+  <div class="container card-grid card-grid-2 about-values-grid">
+    <article class="card about-value-card">
       <p class="eyebrow">{{ t("about.missionTitle") }}</p>
       <h3>{{ t("about.missionTitle") }}</h3>
       <p>{{ t("about.missionText") }}</p>
     </article>
-    <article class="card">
+    <article class="card about-value-card">
       <p class="eyebrow">{{ t("about.visionTitle") }}</p>
       <h3>{{ t("about.visionTitle") }}</h3>
       <p>{{ t("about.visionText") }}</p>
@@ -63,15 +63,15 @@
 <section class="section section-muted">
   <div class="container">
     <div class="section-heading">
-      <p class="eyebrow">Timeline</p>
-      <h2>Milestones</h2>
+      <p class="eyebrow">Journey</p>
+      <h2>{{ t("home.historyTitle") }}</h2>
     </div>
-    <div class="list-stack">
+    <div class="card-grid about-journey-grid">
       @for (item of milestones; track item.year) {
-        <article class="card event-list-card">
-          <img [src]="item.image" [alt]="item.headline" class="event-list-cover" />
-          <div class="event-list-body">
-            <div class="event-pill">{{ item.year }}</div>
+        <article class="card media-card about-journey-card">
+          <img [src]="item.image" [alt]="item.headline" class="card-cover" />
+          <div class="card-body">
+            <p class="eyebrow">{{ item.year }}</p>
             <h3>{{ item.headline }}</h3>
             <p>{{ item.description }}</p>
           </div>
