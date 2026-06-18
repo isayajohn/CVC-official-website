@@ -45,9 +45,6 @@ import { AppLocale, isLocale } from "../core/types";
                 (click)="switchLocale('sw')"
               >SW</button>
             </div>
-            <a class="utility-bar__link" [routerLink]="link('/admin-login')">
-              {{ t("nav.adminLogin") }}
-            </a>
           </div>
         </div>
       </div>

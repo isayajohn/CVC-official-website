@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, computed, inject } from "@angular/core";
+import { RouterLink } from "@angular/router";
 import { ContentService } from "../../core/content.service";
 import { DEFAULT_MANAGED_CONTENT } from "../../core/site.data";
 import { TranslationService } from "../../core/translation.service";
@@ -8,7 +9,7 @@ import { ServiceItem } from "../../core/types";
 @Component({
   selector: "app-services-page",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: "./services.component.html",
   styleUrl: "./services.component.scss",
 })
@@ -29,6 +30,10 @@ export class ServicesPageComponent {
 
   t(path: string): string {
     return this.translation.t(path);
+  }
+
+  link(path = ""): string {
+    return this.translation.path(path);
   }
 
   iconFor(icon: ServiceItem["icon"]): string {

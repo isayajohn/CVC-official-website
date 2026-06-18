@@ -52,6 +52,11 @@
 }
 
 @media (max-width: 760px) {
+  .about-journey-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
   .about-value-card {
     min-height: auto;
     padding: 1.5rem;

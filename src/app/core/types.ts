@@ -35,6 +35,12 @@ export interface EventItem {
   price: string;
 }
 
+export interface YouTubeVideo {
+  id: string;
+  title: string;
+  published: string;
+}
+
 export interface Product {
   id: number;
   name: string;

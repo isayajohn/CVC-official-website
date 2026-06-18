@@ -1,4 +1,4 @@
-<section class="page-hero page-shell">
+<section class="page-hero page-hero-services page-shell">
   <div class="container narrow-copy">
     <p class="eyebrow">Services</p>
     <h1>{{ t("services.title") }}</h1>
@@ -45,8 +45,8 @@
     <p class="eyebrow">Contact</p>
     <h2>{{ serviceContent().ctaTitle }}</h2>
     <p class="section-copy">{{ serviceContent().ctaDescription }}</p>
-    <button type="button" class="btn btn-secondary">
+    <a class="btn btn-secondary" [routerLink]="link('/contact')">
       {{ t("common.contactUs") }}
-    </button>
+    </a>
   </div>
 </section>

@@ -2,57 +2,90 @@
   display: block;
 }
 
-.music-grid {
+.music-video-section {
+  padding-bottom: 4.5rem;
+}
+
+.music-video-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.music-card {
+.music-video-card {
   height: 100%;
+}
 
-  &__cover {
-    aspect-ratio: 4 / 3;
-  }
+.music-video-card__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #101427;
+}
 
-  &__body {
-    min-height: 0;
-  }
+.music-video-card__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
-  &__body app-audio-player {
-    display: block;
-    min-width: 0;
-  }
+.music-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
 
-  &__body small {
-    color: var(--color-muted);
-    line-height: 1.5;
-  }
+.music-pagination__pages {
+  display: flex;
+  gap: 0.45rem;
+}
 
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin-top: auto;
-  }
+.music-pagination__button,
+.music-pagination__page {
+  min-height: 40px;
+  border: 1px solid rgba(98, 52, 212, 0.18);
+  background: #fff;
+  color: var(--color-dark);
+  font-weight: 700;
+  cursor: pointer;
+}
 
-  &__footer strong {
-    font-size: 1.1rem;
-  }
+.music-pagination__button {
+  padding: 0 1rem;
+  border-radius: 999px;
+}
+
+.music-pagination__page {
+  width: 40px;
+  border-radius: 999px;
+}
+
+.music-pagination__page.is-active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.music-pagination__button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 @media (max-width: 1100px) {
-  .music-grid {
+  .music-video-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 760px) {
-  .music-grid {
-    grid-template-columns: 1fr;
+  .music-video-heading {
+    align-items: start;
+    flex-direction: column;
   }
 
-  .music-card__footer {
-    align-items: stretch;
-    flex-direction: column;
+  .music-video-grid {
+    grid-template-columns: 1fr;
   }
 }

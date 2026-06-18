@@ -20,6 +20,11 @@
 
 @media (max-width: 760px) {
   .landing-journey {
+    &__heading {
+      align-items: start;
+      flex-direction: column;
+    }
+
     &__grid {
       grid-template-columns: 1fr;
     }

@@ -279,6 +279,8 @@ p {
 
 .mobile-toggle {
   display: none;
+  color: var(--color-dark);
+  flex: 0 0 44px;
 }
 
 .mobile-nav {
@@ -301,7 +303,13 @@ p {
 }
 
 .icon {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: currentColor;
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
 }
 
 .btn {
@@ -358,8 +366,7 @@ p {
   padding-top: 5rem;
 }
 
-.hero,
-.page-hero {
+.hero {
   padding: 7rem 0 5rem;
   position: relative;
   overflow: hidden;
@@ -367,6 +374,17 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.page-hero {
+  padding: 4.75rem 0 2.25rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url("/images/cvc/about-hero-choir.jpg") center/cover no-repeat;
 }
 
 .hero::before,
@@ -380,6 +398,34 @@ p {
     rgba(50, 25, 105, 0.82) 60%,
     rgba(14, 21, 38, 0.88) 100%
   );
+}
+
+.page-hero::before {
+  background:
+    linear-gradient(150deg, rgba(10, 14, 30, 0.9) 0%, rgba(56, 33, 111, 0.7) 58%, rgba(14, 21, 38, 0.88) 100%),
+    linear-gradient(90deg, rgba(10, 14, 30, 0.72), rgba(10, 14, 30, 0.24));
+}
+
+.page-hero-music {
+  background-image: url("/images/cvc/hero-singer.jpg");
+}
+
+.page-hero-shop {
+  background-image: url("/images/cvc/about-history.jpg");
+}
+
+.page-hero-tickets,
+.page-hero-events {
+  background-image: url("/images/cvc/hero-worship.jpg");
+}
+
+.page-hero-services {
+  background-image: url("/images/cvc/hero-vocalist.jpg");
+}
+
+.page-hero-about,
+.page-hero-contact {
+  background-image: url("/images/cvc/about-hero-choir.jpg");
 }
 
 .hero .eyebrow,
@@ -470,6 +516,10 @@ p {
 .narrow-copy h1 {
   color: #fff;
   font-size: clamp(2.8rem, 6vw, 5rem);
+}
+
+.page-hero .narrow-copy h1 {
+  font-size: clamp(2.25rem, 4.5vw, 3.7rem);
 }
 
 .hero-subtitle,
@@ -1261,6 +1311,11 @@ p {
   .hero,
   .page-hero {
     padding-top: 3.5rem;
+  }
+
+  .page-hero {
+    min-height: 26vh;
+    padding-bottom: 1.75rem;
   }
 
   .card-grid-2,

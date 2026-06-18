@@ -17,7 +17,8 @@ import { PublicShellComponent } from "./shells/public-shell.component";
 
 export const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "en" },
-  { path: ":locale/admin-login", component: AdminLoginPageComponent },
+  { path: "admin/login", component: AdminLoginPageComponent },
+  { path: ":locale/admin-login", redirectTo: "admin/login" },
   {
     path: ":locale/admin",
     component: AdminShellComponent,

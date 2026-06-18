@@ -14,6 +14,8 @@ export const MESSAGES = {
       search: "Search",
       english: "English",
       swahili: "Kiswahili",
+      previous: "Previous",
+      next: "Next",
     },
     nav: {
       home: "Home",
@@ -39,6 +41,7 @@ export const MESSAGES = {
       eventsTitle: "Upcoming worship moments",
       ministriesTitle: "How the choir serves",
       historyTitle: "Milestones that shaped the ministry",
+      followJourney: "Follow the Journey",
     },
     music: {
       title: "Music Library",
@@ -50,6 +53,9 @@ export const MESSAGES = {
       released: "Released",
       tracks: "tracks",
       previewOnly: "30-second previews only. Download the app for full access.",
+      videoEyebrow: "YouTube",
+      videoTitle: "Live worship videos",
+      watchChannel: "Watch Channel",
     },
     services: {
       title: "Our Services",
@@ -174,6 +180,8 @@ export const MESSAGES = {
       search: "Tafuta",
       english: "English",
       swahili: "Kiswahili",
+      previous: "Nyuma",
+      next: "Mbele",
     },
     nav: {
       home: "Nyumbani",
@@ -199,6 +207,7 @@ export const MESSAGES = {
       eventsTitle: "Nyakati za ibada zijazo",
       ministriesTitle: "Jinsi kwaya inavyohudumu",
       historyTitle: "Hatua muhimu za safari yetu",
+      followJourney: "Fuatilia Safari",
     },
     music: {
       title: "Maktaba ya Muziki",
@@ -211,6 +220,9 @@ export const MESSAGES = {
       tracks: "nyimbo",
       previewOnly:
         "Maonyesho ya sekunde 30 pekee. Pakua app kwa ufikiaji kamili.",
+      videoEyebrow: "YouTube",
+      videoTitle: "Video za ibada ya moja kwa moja",
+      watchChannel: "Tazama Channel",
     },
     services: {
       title: "Huduma Zetu",

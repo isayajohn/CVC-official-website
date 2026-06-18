@@ -1,6 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { HISTORY_MILESTONES, LEADERS } from "../../core/site.data";
+import {
+  CVC_INSTAGRAM_URL,
+  HISTORY_MILESTONES,
+  LEADERS,
+} from "../../core/site.data";
 import { TranslationService } from "../../core/translation.service";
 
 @Component({
@@ -13,6 +17,7 @@ import { TranslationService } from "../../core/translation.service";
 export class AboutPageComponent {
   readonly leaders = LEADERS;
   readonly milestones = HISTORY_MILESTONES;
+  readonly instagramUrl = CVC_INSTAGRAM_URL;
 
   constructor(private readonly translation: TranslationService) {}
 

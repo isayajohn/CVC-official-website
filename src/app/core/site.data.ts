@@ -8,11 +8,91 @@ import {
   Product,
   Song,
   TicketEvent,
+  YouTubeVideo,
 } from "./types";
 
 export const SITE_NAME = "AIC Chang'ombe Choir (CVC)";
 export const SITE_SHORT_NAME = "AIC Chang'ombe Choir";
 export const SITE_ABBREVIATION = "CVC";
+export const CVC_YOUTUBE_URL = "https://www.youtube.com/@aictchangombechoir_";
+export const CVC_INSTAGRAM_URL = "https://www.instagram.com/aicchangombechoir/";
+export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
+  {
+    id: "fMQJQXzUaU4",
+    title: "MUNGU MTAWALA",
+    published: "May 25, 2026",
+  },
+  {
+    id: "K40RCxjOtXI",
+    title: "Now playing on Youtube #cvc #gospelmusic #Mungumtawala",
+    published: "May 20, 2026",
+  },
+  {
+    id: "VGbNZLM_Lyc",
+    title: "AIC Chang'ombe Choir (CVC) - Mungu Mtawala (Live Video)",
+    published: "May 20, 2026",
+  },
+  {
+    id: "RdT3DcZm2JE",
+    title: "#Godalone#Vyenyeuhai#CVC",
+    published: "May 6, 2026",
+  },
+  {
+    id: "ONPgsp8om4M",
+    title: "AIC Chang'ombe Choir (CVC) - God Alone (Live Video)",
+    published: "May 6, 2026",
+  },
+  {
+    id: "0lYrIt3Uvms",
+    title: "AIC Chang`ombe Choir (CVC) - Vitasa Saba (Live Video)",
+    published: "Apr 14, 2026",
+  },
+  {
+    id: "PjEMia92d-s",
+    title: "Now playing on Youtube #litatimia",
+    published: "Mar 13, 2026",
+  },
+  {
+    id: "DwNDTPgMZ5g",
+    title: "AIC Chang`ombe Choir (CVC) - Litatimia (Live Video)",
+    published: "Mar 13, 2026",
+  },
+  {
+    id: "ipR1egP-MWU",
+    title: "Kesho saa 7 kamili mchana tukutane Youtube #Litatimia#CVC",
+    published: "Mar 12, 2026",
+  },
+  {
+    id: "YQ9E9L_ozj8",
+    title: "Wimbo wa baraka wakati wote#gusa #cvc",
+    published: "Feb 26, 2026",
+  },
+  {
+    id: "eQNy93D5RTI",
+    title: "Wimbo huu sasa unapatikana kwenye mitandao yetu yote ya kijamii",
+    published: "Feb 25, 2026",
+  },
+  {
+    id: "FgOVtBb4u1Q",
+    title: "AIC Chang`ombe Choir (CVC) - Gusa (Live Video)",
+    published: "Feb 24, 2026",
+  },
+  {
+    id: "X7tR1zQV3DQ",
+    title: "NIKULIPE NINI",
+    published: "Jan 23, 2026",
+  },
+  {
+    id: "oboncJo9QgQ",
+    title: "Toka mwanzo uko pamoja nasi, asante Elohim",
+    published: "Jan 19, 2026",
+  },
+  {
+    id: "s3sVAnfkfFQ",
+    title: "Tunayaweza mambo yote katika yeye atutiaye nguvu",
+    published: "Jan 18, 2026",
+  },
+];
 
 export const SONGS: Song[] = [
   {
@@ -304,8 +384,8 @@ export const DEFAULT_MANAGED_CONTENT: ManagedContent = {
     address: "Dar es Salaam, Tanzania",
     socials: {
       facebook: "https://facebook.com",
-      instagram: "https://instagram.com",
-      youtube: "https://youtube.com",
+      instagram: CVC_INSTAGRAM_URL,
+      youtube: CVC_YOUTUBE_URL,
     },
   },
   services: {

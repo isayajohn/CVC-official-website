@@ -1,5 +1,8 @@
 import { Component, inject } from "@angular/core";
-import { HISTORY_MILESTONES } from "../../../../core/site.data";
+import {
+  CVC_INSTAGRAM_URL,
+  HISTORY_MILESTONES,
+} from "../../../../core/site.data";
 import { TranslationService } from "../../../../core/translation.service";
 
 @Component({
@@ -12,6 +15,7 @@ export class LandingJourneyComponent {
   private readonly translation = inject(TranslationService);
 
   readonly milestones = HISTORY_MILESTONES;
+  readonly instagramUrl = CVC_INSTAGRAM_URL;
 
   t(path: string): string {
     return this.translation.t(path);

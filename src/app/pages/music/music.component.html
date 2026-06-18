@@ -1,4 +1,4 @@
-<section class="page-hero page-shell">
+<section class="page-hero page-hero-music page-shell">
   <div class="container narrow-copy">
     <p class="eyebrow">Music</p>
     <h1>{{ t("music.title") }}</h1>
@@ -7,82 +7,70 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section section-muted music-video-section">
   <div class="container">
-    <div class="tab-row">
-      <button
-        type="button"
-        class="tab-button"
-        [class.is-active]="tab() === 'songs'"
-        (click)="tab.set('songs')"
-      >
-        {{ t("music.songsTab") }}
-      </button>
-      <button
-        type="button"
-        class="tab-button"
-        [class.is-active]="tab() === 'albums'"
-        (click)="tab.set('albums')"
-      >
-        {{ t("music.albumsTab") }}
-      </button>
+    <div class="section-heading inline-heading music-video-heading">
+      <div>
+        <p class="eyebrow">{{ t("music.videoEyebrow") }}</p>
+        <h2>{{ t("music.videoTitle") }}</h2>
+      </div>
+      <a class="text-link" [href]="youtubeUrl" target="_blank" rel="noreferrer">
+        {{ t("music.watchChannel") }}
+      </a>
     </div>
 
-    @if (tab() === "songs") {
-      <div class="card-grid music-grid">
-        @for (song of songs; track song.id) {
-          <article class="card media-card music-card">
-            <img
-              [src]="song.coverImage"
-              [alt]="song.title"
-              class="card-cover music-card__cover"
-            />
-            <div class="card-body music-card__body">
-              <h3>{{ song.title }}</h3>
-              <p>{{ song.album }}</p>
-              <app-audio-player
-                [src]="song.audioPreview"
-                [title]="song.title"
-                [maxDuration]="30"
-              />
-              <small
-                >{{ t("music.duration") }}: {{ song.duration }} •
-                {{ t("music.released") }}: {{ song.released }}</small
-              >
-              <div class="music-card__footer">
-                <strong>{{ song.price }}</strong>
-                <button type="button" class="btn btn-primary">
-                  {{ t("common.buyMusic") }}
-                </button>
-              </div>
-            </div>
-          </article>
-        }
-      </div>
-    } @else {
-      <div class="card-grid music-grid">
-        @for (album of albums; track album.id) {
-          <article class="card media-card music-card">
-            <img
-              [src]="album.coverImage"
-              [alt]="album.title"
-              class="card-cover music-card__cover"
-            />
-            <div class="card-body music-card__body">
-              <h3>{{ album.title }}</h3>
-              <p>
-                {{ album.tracks }} {{ t("music.tracks") }} •
-                {{ album.released }}
-              </p>
-              <div class="music-card__footer">
-                <strong>{{ album.price }}</strong>
-                <button type="button" class="btn btn-primary">
-                  {{ t("common.buyMusic") }}
-                </button>
-              </div>
-            </div>
-          </article>
-        }
+    <div class="card-grid music-video-grid">
+      @for (video of pagedVideos(); track video.id) {
+        <article class="card media-card music-video-card">
+          <div class="music-video-card__frame">
+            <iframe
+              [src]="videoUrl(video)"
+              [title]="video.title"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="card-body">
+            <p class="eyebrow">{{ video.published }}</p>
+            <h3>{{ video.title }}</h3>
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (totalPages() > 1) {
+      <div class="music-pagination" aria-label="YouTube video pages">
+        <button
+          type="button"
+          class="music-pagination__button"
+          [disabled]="currentPage() === 1"
+          (click)="previousPage()"
+        >
+          {{ t("common.previous") }}
+        </button>
+
+        <div class="music-pagination__pages">
+          @for (page of pages(); track page) {
+            <button
+              type="button"
+              class="music-pagination__page"
+              [class.is-active]="page === currentPage()"
+              [attr.aria-label]="'Show page ' + page"
+              (click)="setPage(page)"
+            >
+              {{ page }}
+            </button>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="music-pagination__button"
+          [disabled]="currentPage() === totalPages()"
+          (click)="nextPage()"
+        >
+          {{ t("common.next") }}
+        </button>
       </div>
     }
   </div>
