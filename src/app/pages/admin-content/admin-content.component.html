@@ -16,6 +16,165 @@
   }
 
   <section class="card form-card">
+    <div class="admin-section-heading">
+      <div>
+        <h3>Content Pages</h3>
+        <p>Manage page labels, hero copy, SEO text, and publish status.</p>
+      </div>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="addContentPage()"
+      >
+        Add Page
+      </button>
+    </div>
+
+    <div class="cms-table-wrap">
+      <table class="cms-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>Slug</th>
+            <th>Status</th>
+            <th>SEO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (
+            page of draft.contentPages[currentLocale];
+            track page.id;
+            let index = $index
+          ) {
+            <tr [class.is-selected]="selectedPageIndex === index">
+              <td>
+                <button
+                  type="button"
+                  class="cms-table-link"
+                  (click)="selectPage(index)"
+                >
+                  {{ page.navLabel }}
+                </button>
+                <span>{{ page.title }}</span>
+              </td>
+              <td>/{{ page.slug }}</td>
+              <td>
+                <span
+                  class="status-pill"
+                  [class.published]="page.status === 'published'"
+                  [class.draft]="page.status === 'draft'"
+                >
+                  {{ page.status }}
+                </span>
+              </td>
+              <td>{{ page.seoTitle }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="cms-icon-button"
+                  aria-label="Edit page"
+                  (click)="selectPage(index)"
+                >
+                  <span class="material-icons">edit</span>
+                </button>
+                <button
+                  type="button"
+                  class="cms-icon-button"
+                  aria-label="Remove page"
+                  [disabled]="page.id === 'home'"
+                  (click)="removeContentPage(index)"
+                >
+                  <span class="material-icons">delete</span>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (selectedPage; as page) {
+      <div class="cms-edit-form">
+        <div class="admin-section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Add/Edit Form</p>
+            <h4>{{ page.title }}</h4>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <label class="field">
+            <span>Navigation Label</span>
+            <input
+              class="input"
+              [(ngModel)]="page.navLabel"
+              name="pageNavLabel"
+            />
+          </label>
+          <label class="field">
+            <span>Status</span>
+            <select class="input" [(ngModel)]="page.status" name="pageStatus">
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Title</span>
+            <input
+              class="input"
+              [(ngModel)]="page.title"
+              (ngModelChange)="updatePageSlug(page)"
+              name="pageTitle"
+            />
+          </label>
+          <label class="field">
+            <span>Slug</span>
+            <input
+              class="input"
+              [(ngModel)]="page.slug"
+              [readonly]="page.id === 'home'"
+              name="pageSlug"
+            />
+          </label>
+          <label class="field field-full">
+            <span>Subtitle</span>
+            <textarea
+              class="textarea"
+              [(ngModel)]="page.subtitle"
+              name="pageSubtitle"
+            ></textarea>
+          </label>
+          <label class="field field-full">
+            <span>Hero Image</span>
+            <input
+              class="input"
+              [(ngModel)]="page.heroImage"
+              name="pageHeroImage"
+            />
+          </label>
+          <label class="field">
+            <span>SEO Title</span>
+            <input
+              class="input"
+              [(ngModel)]="page.seoTitle"
+              name="pageSeoTitle"
+            />
+          </label>
+          <label class="field field-full">
+            <span>SEO Description</span>
+            <textarea
+              class="textarea"
+              [(ngModel)]="page.seoDescription"
+              name="pageSeoDescription"
+            ></textarea>
+          </label>
+        </div>
+      </div>
+    }
+  </section>
+
+  <section class="card form-card">
     <h3>{{ t("admin.siteContact") }}</h3>
     <div class="form-grid">
       <label class="field">
@@ -52,6 +211,95 @@
           class="input"
           [(ngModel)]="draft.site.socials.youtube"
           name="youtube"
+        />
+      </label>
+    </div>
+  </section>
+
+  <section class="card form-card">
+    <h3>{{ t("admin.customization") }}</h3>
+    <div class="form-grid">
+      <label class="field">
+        <span>Brand Name</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.brandName"
+          name="brandName"
+        />
+      </label>
+      <label class="field">
+        <span>Short Name</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.shortName"
+          name="shortName"
+        />
+      </label>
+      <label class="field">
+        <span>Abbreviation</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.abbreviation"
+          name="abbreviation"
+        />
+      </label>
+      <label class="field">
+        <span>Logo URL</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.logoUrl"
+          name="logoUrl"
+        />
+      </label>
+      <label class="field">
+        <span>Primary Color</span>
+        <input
+          class="input"
+          type="color"
+          [(ngModel)]="draft.customization.primaryColor"
+          name="primaryColor"
+        />
+      </label>
+      <label class="field">
+        <span>Secondary Color</span>
+        <input
+          class="input"
+          type="color"
+          [(ngModel)]="draft.customization.secondaryColor"
+          name="secondaryColor"
+        />
+      </label>
+      <label class="field">
+        <span>Accent Color</span>
+        <input
+          class="input"
+          type="color"
+          [(ngModel)]="draft.customization.accentColor"
+          name="accentColor"
+        />
+      </label>
+      <label class="field">
+        <span>Hero Image</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.heroImage"
+          name="heroImage"
+        />
+      </label>
+      <label class="field field-full">
+        <span>Announcement</span>
+        <textarea
+          class="textarea"
+          [(ngModel)]="draft.customization.announcement"
+          name="announcement"
+        ></textarea>
+      </label>
+      <label class="field field-full">
+        <span>Footer Tagline</span>
+        <input
+          class="input"
+          [(ngModel)]="draft.customization.footerTagline"
+          name="footerTagline"
         />
       </label>
     </div>
@@ -131,6 +379,136 @@
                 (ngModelChange)="updateFeatures(index, $event)"
                 [name]="'features-' + index"
               ></textarea>
+            </label>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="card form-card">
+    <div class="admin-section-heading">
+      <div>
+        <h3>
+          {{ t("admin.newsManager") }} ({{ currentLocale.toUpperCase() }})
+        </h3>
+        <p>Manage news posts for the public website.</p>
+      </div>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="addNewsArticle()"
+      >
+        Add News
+      </button>
+    </div>
+
+    <div class="admin-service-stack">
+      @for (
+        article of draft.news[currentLocale];
+        track article.id;
+        let index = $index
+      ) {
+        <article class="card service-editor-card">
+          <div class="admin-section-heading compact-heading">
+            <div>
+              <p class="eyebrow">{{ article.status }}</p>
+              <h4>{{ article.title }}</h4>
+            </div>
+            <button
+              type="button"
+              class="btn btn-ghost"
+              (click)="removeNewsArticle(index)"
+            >
+              Remove
+            </button>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Title</span>
+              <input
+                class="input"
+                [(ngModel)]="article.title"
+                (ngModelChange)="updateNewsSlug(article)"
+                [name]="'news-title-' + index"
+              />
+            </label>
+            <label class="field">
+              <span>Slug</span>
+              <input
+                class="input"
+                [(ngModel)]="article.slug"
+                [name]="'news-slug-' + index"
+              />
+            </label>
+            <label class="field">
+              <span>Status</span>
+              <select
+                class="input"
+                [(ngModel)]="article.status"
+                [name]="'news-status-' + index"
+              >
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Published Date</span>
+              <input
+                class="input"
+                type="date"
+                [(ngModel)]="article.publishedAt"
+                [name]="'news-date-' + index"
+              />
+            </label>
+            <label class="field">
+              <span>Author</span>
+              <input
+                class="input"
+                [(ngModel)]="article.author"
+                [name]="'news-author-' + index"
+              />
+            </label>
+            <label class="field">
+              <span>Category</span>
+              <input
+                class="input"
+                [(ngModel)]="article.category"
+                [name]="'news-category-' + index"
+              />
+            </label>
+            <label class="field field-full">
+              <span>Image URL</span>
+              <input
+                class="input"
+                [(ngModel)]="article.image"
+                [name]="'news-image-' + index"
+              />
+            </label>
+            <label class="field field-full">
+              <span>Excerpt</span>
+              <textarea
+                class="textarea"
+                [(ngModel)]="article.excerpt"
+                [name]="'news-excerpt-' + index"
+              ></textarea>
+            </label>
+            <label class="field field-full">
+              <span>Body</span>
+              <textarea
+                class="textarea mono-textarea"
+                [(ngModel)]="article.body"
+                [name]="'news-body-' + index"
+              ></textarea>
+            </label>
+            <label class="field checkbox-field">
+              <input
+                type="checkbox"
+                [(ngModel)]="article.featured"
+                [name]="'news-featured-' + index"
+              />
+              <span>Featured article</span>
             </label>
           </div>
         </article>

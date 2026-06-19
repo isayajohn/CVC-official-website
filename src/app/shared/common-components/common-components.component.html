@@ -1,0 +1,233 @@
+<section class="common-kit">
+  <div class="common-kit__header">
+    <p class="eyebrow">Common Components</p>
+    <h2>WebAwesome Building Blocks</h2>
+    <div class="common-kit__actions">
+      <wa-button variant="brand" pill with-start>
+        <wa-icon slot="start" name="wand-magic-sparkles"></wa-icon>
+        Primary Action
+      </wa-button>
+      <wa-button variant="neutral" appearance="outlined" pill with-start>
+        <wa-icon slot="start" name="copy"></wa-icon>
+        Secondary
+      </wa-button>
+    </div>
+  </div>
+
+  <div class="common-kit__grid">
+    <wa-card class="common-kit__card" appearance="outlined" with-header>
+      <div slot="header" class="common-kit__card-header">
+        <span>Buttons</span>
+        <wa-badge variant="brand" appearance="filled">Ready</wa-badge>
+      </div>
+
+      <div class="common-kit__stack">
+        <wa-button-group label="Common button actions">
+          <wa-button variant="brand">Save</wa-button>
+          <wa-button variant="neutral" appearance="outlined">Preview</wa-button>
+          <wa-button variant="danger" appearance="plain">Delete</wa-button>
+        </wa-button-group>
+
+        <div class="common-kit__cluster">
+          <wa-tooltip for="icon-download" placement="top">
+            Download file
+          </wa-tooltip>
+          <wa-button
+            id="icon-download"
+            variant="neutral"
+            appearance="filled"
+            pill
+          >
+            <wa-icon name="download" label="Download"></wa-icon>
+          </wa-button>
+
+          <wa-button variant="success" appearance="filled" pill with-start>
+            <wa-icon slot="start" name="circle-check"></wa-icon>
+            Approved
+          </wa-button>
+        </div>
+
+        <div class="common-kit__material-icons">
+          <button mat-stroked-button type="button">
+            <mat-icon>shopping_cart</mat-icon>
+            Material Icons
+          </button>
+          <button mat-icon-button type="button" matTooltip="Favorite">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-icon-button type="button" matTooltip="Settings">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+      </div>
+    </wa-card>
+
+    <wa-card class="common-kit__card" appearance="outlined" with-header>
+      <div slot="header" class="common-kit__card-header">
+        <span>Forms</span>
+        <wa-badge variant="success" appearance="filled">Reusable</wa-badge>
+      </div>
+
+      <form class="common-kit__form" (submit)="$event.preventDefault()">
+        <wa-input
+          label="Name"
+          placeholder="Choir member name"
+          with-clear
+          required
+        >
+          <wa-icon slot="start" name="user"></wa-icon>
+        </wa-input>
+
+        <wa-select label="Role" value="alto" with-clear>
+          <wa-option value="soprano">Soprano</wa-option>
+          <wa-option value="alto">Alto</wa-option>
+          <wa-option value="tenor">Tenor</wa-option>
+          <wa-option value="bass">Bass</wa-option>
+        </wa-select>
+
+        <wa-textarea
+          label="Notes"
+          rows="3"
+          resize="auto"
+          maxlength="140"
+          with-count
+          placeholder="Short internal note"
+        ></wa-textarea>
+
+        <div class="common-kit__cluster">
+          <wa-checkbox checked>Active</wa-checkbox>
+          <wa-switch checked>Email updates</wa-switch>
+        </div>
+
+        <wa-radio-group label="Priority" value="normal">
+          <wa-radio value="low">Low</wa-radio>
+          <wa-radio value="normal">Normal</wa-radio>
+          <wa-radio value="high">High</wa-radio>
+        </wa-radio-group>
+
+        <wa-slider label="Capacity" value="72" min="0" max="100"></wa-slider>
+      </form>
+    </wa-card>
+
+    <wa-card class="common-kit__card" appearance="outlined" with-header>
+      <div slot="header" class="common-kit__card-header">
+        <span>Dialogs</span>
+        <wa-badge variant="warning" appearance="filled">Pattern</wa-badge>
+      </div>
+
+      <div class="common-kit__stack">
+        <wa-button
+          variant="brand"
+          appearance="filled"
+          pill
+          (click)="dialogOpen = true"
+        >
+          Open Dialog
+        </wa-button>
+
+        <wa-popover for="popover-trigger" placement="bottom-start">
+          <div class="common-kit__popover">
+            <strong>Popover content</strong>
+            <span>Use this for compact contextual actions.</span>
+          </div>
+        </wa-popover>
+        <wa-button
+          id="popover-trigger"
+          variant="neutral"
+          appearance="outlined"
+          pill
+        >
+          Show Popover
+        </wa-button>
+
+        <wa-dialog
+          label="Reusable Dialog"
+          with-footer
+          light-dismiss
+          [attr.open]="dialogOpen ? '' : null"
+          (wa-after-hide)="dialogOpen = false"
+        >
+          <p>
+            This dialog can be reused for confirmations, quick forms, or focused
+            admin actions.
+          </p>
+          <div slot="footer" class="common-kit__dialog-actions">
+            <wa-button appearance="plain" (click)="dialogOpen = false">
+              Cancel
+            </wa-button>
+            <wa-button variant="brand" (click)="dialogOpen = false">
+              Confirm
+            </wa-button>
+          </div>
+        </wa-dialog>
+      </div>
+    </wa-card>
+
+    <wa-card class="common-kit__card" appearance="outlined" with-header>
+      <div slot="header" class="common-kit__card-header">
+        <span>Utilities</span>
+        <wa-badge variant="neutral" appearance="outlined">Intl</wa-badge>
+      </div>
+
+      <dl class="common-kit__metrics">
+        <div>
+          <dt>Revenue</dt>
+          <dd>
+            <wa-format-number
+              [attr.value]="revenue"
+              type="currency"
+              currency="TZS"
+              currency-display="code"
+            ></wa-format-number>
+          </dd>
+        </div>
+        <div>
+          <dt>Assets</dt>
+          <dd><wa-format-bytes [attr.value]="fileSize"></wa-format-bytes></dd>
+        </div>
+        <div>
+          <dt>Report</dt>
+          <dd>
+            <wa-format-date
+              [attr.date]="reportDate"
+              month="long"
+              day="numeric"
+              year="numeric"
+            ></wa-format-date>
+          </dd>
+        </div>
+        <div>
+          <dt>Updated</dt>
+          <dd>
+            <wa-relative-time [attr.date]="reportDate"></wa-relative-time>
+          </dd>
+        </div>
+      </dl>
+    </wa-card>
+
+    <wa-card
+      class="common-kit__card common-kit__card--wide"
+      appearance="outlined"
+      with-header
+    >
+      <div slot="header" class="common-kit__card-header">
+        <span>Data Visualization</span>
+        <wa-badge
+          [attr.variant]="chartsAvailable ? 'success' : 'warning'"
+          appearance="filled"
+        >
+          {{ chartsAvailable ? "Available" : "Pending package support" }}
+        </wa-badge>
+      </div>
+
+      <div class="common-kit__chart-grid">
+        @for (chart of chartComponents; track chart) {
+          <div class="common-kit__chart-token">
+            <wa-icon name="chart-simple"></wa-icon>
+            <span>wa-{{ chart }}</span>
+          </div>
+        }
+      </div>
+    </wa-card>
+  </div>
+</section>

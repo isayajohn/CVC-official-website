@@ -99,6 +99,45 @@ export interface SiteContent {
   };
 }
 
+export interface SiteCustomization {
+  brandName: string;
+  shortName: string;
+  abbreviation: string;
+  logoUrl: string;
+  primaryColor: string;
+  secondaryColor: string;
+  accentColor: string;
+  heroImage: string;
+  announcement: string;
+  footerTagline: string;
+}
+
+export interface NewsArticle {
+  id: string;
+  slug: string;
+  status: "draft" | "published";
+  featured: boolean;
+  publishedAt: string;
+  author: string;
+  category: string;
+  image: string;
+  title: string;
+  excerpt: string;
+  body: string;
+}
+
+export interface ContentPage {
+  id: string;
+  slug: string;
+  status: "draft" | "published";
+  navLabel: string;
+  title: string;
+  subtitle: string;
+  heroImage: string;
+  seoTitle: string;
+  seoDescription: string;
+}
+
 export interface ServiceItem {
   id: string;
   title: string;
@@ -119,6 +158,9 @@ export interface LocaleServicesContent {
 
 export interface ManagedContent {
   site: SiteContent;
+  customization: SiteCustomization;
+  contentPages: Record<AppLocale, ContentPage[]>;
+  news: Record<AppLocale, NewsArticle[]>;
   services: Record<AppLocale, LocaleServicesContent>;
 }
 

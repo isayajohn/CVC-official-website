@@ -17,18 +17,26 @@ import { AppLocale, isLocale } from "../core/types";
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   template: `
-    <div class="site-shell">
-
+    <div
+      class="site-shell"
+      [style.--color-primary]="customization().primaryColor"
+      [style.--color-secondary]="customization().secondaryColor"
+      [style.--color-accent]="customization().accentColor"
+    >
       <!-- ── Utility bar ─────────────────────────────────────────── -->
       <div class="utility-bar">
         <div class="container utility-bar__inner">
           <div class="utility-bar__contact">
             <a [href]="'tel:' + site().phone">
-              <span class="material-symbols-outlined utility-bar__icon">phone</span>
+              <span class="material-symbols-outlined utility-bar__icon"
+                >phone</span
+              >
               {{ site().phone }}
             </a>
             <a [href]="'mailto:' + site().email">
-              <span class="material-symbols-outlined utility-bar__icon">mail</span>
+              <span class="material-symbols-outlined utility-bar__icon"
+                >mail</span
+              >
               {{ site().email }}
             </a>
           </div>
@@ -38,12 +46,16 @@ import { AppLocale, isLocale } from "../core/types";
                 type="button"
                 [class.is-selected]="locale() === 'en'"
                 (click)="switchLocale('en')"
-              >EN</button>
+              >
+                EN
+              </button>
               <button
                 type="button"
                 [class.is-selected]="locale() === 'sw'"
                 (click)="switchLocale('sw')"
-              >SW</button>
+              >
+                SW
+              </button>
             </div>
           </div>
         </div>
@@ -53,10 +65,10 @@ import { AppLocale, isLocale } from "../core/types";
       <header class="site-header">
         <div class="container nav-row">
           <a class="brand-mark" [routerLink]="link()">
-            <img src="/logo-cvc.svg" alt="CVC logo" />
+            <img [src]="customization().logoUrl" alt="CVC logo" />
             <div>
-              <strong>{{ siteName }}</strong>
-              <span>{{ abbreviation }}</span>
+              <strong>{{ customization().shortName }}</strong>
+              <span>{{ customization().abbreviation }}</span>
             </div>
           </a>
 
@@ -66,7 +78,8 @@ import { AppLocale, isLocale } from "../core/types";
                 [routerLink]="item.path"
                 routerLinkActive="is-active"
                 [routerLinkActiveOptions]="{ exact: item.exact }"
-              >{{ item.label }}</a>
+                >{{ item.label }}</a
+              >
             }
           </nav>
 
@@ -74,7 +87,8 @@ import { AppLocale, isLocale } from "../core/types";
             <a
               class="btn btn-secondary header-cta desktop-admin"
               [routerLink]="link('/tickets')"
-            >{{ t("nav.getTickets") }}</a>
+              >{{ t("nav.getTickets") }}</a
+            >
             <button
               type="button"
               class="icon-button mobile-toggle"
@@ -95,13 +109,15 @@ import { AppLocale, isLocale } from "../core/types";
                 routerLinkActive="is-active"
                 [routerLinkActiveOptions]="{ exact: item.exact }"
                 (click)="mobileOpen.set(false)"
-              >{{ item.label }}</a>
+                >{{ item.label }}</a
+              >
             }
             <a
               class="btn btn-secondary"
               [routerLink]="link('/tickets')"
               (click)="mobileOpen.set(false)"
-            >{{ t("nav.getTickets") }}</a>
+              >{{ t("nav.getTickets") }}</a
+            >
           </div>
         }
       </header>
@@ -113,7 +129,6 @@ import { AppLocale, isLocale } from "../core/types";
 
       <!-- ── Footer ──────────────────────────────────────────────── -->
       <footer class="site-footer">
-
         <!-- Newsletter strip -->
         <div class="footer-newsletter">
           <div class="container footer-newsletter__inner">
@@ -139,17 +154,16 @@ import { AppLocale, isLocale } from "../core/types";
 
         <!-- Four-column grid -->
         <div class="container footer-grid">
-
           <!-- Col 1 – Brand -->
           <div class="footer-column">
             <div class="brand-mark footer-brand">
-              <img src="/logo-cvc.svg" alt="CVC logo" />
+              <img [src]="customization().logoUrl" alt="CVC logo" />
               <div>
-                <strong>{{ siteName }}</strong>
-                <span>{{ abbreviation }}</span>
+                <strong>{{ customization().shortName }}</strong>
+                <span>{{ customization().abbreviation }}</span>
               </div>
             </div>
-            <p class="footer-tagline">{{ t("footer.tagline") }}</p>
+            <p class="footer-tagline">{{ customization().footerTagline }}</p>
             <p class="footer-address">{{ site().address }}</p>
             <div class="social-row">
               <a
@@ -157,19 +171,22 @@ import { AppLocale, isLocale } from "../core/types";
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-              ><span class="material-symbols-outlined">groups</span></a>
+                ><span class="material-symbols-outlined">groups</span></a
+              >
               <a
                 [href]="site().socials.instagram"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-              ><span class="material-symbols-outlined">photo_camera</span></a>
+                ><span class="material-symbols-outlined">photo_camera</span></a
+              >
               <a
                 [href]="site().socials.youtube"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="YouTube"
-              ><span class="material-symbols-outlined">play_circle</span></a>
+                ><span class="material-symbols-outlined">play_circle</span></a
+              >
             </div>
           </div>
 
@@ -199,15 +216,21 @@ import { AppLocale, isLocale } from "../core/types";
             <h3>{{ t("footer.contact") }}</h3>
             <div class="footer-links footer-contact">
               <a [href]="'tel:' + site().phone">
-                <span class="material-symbols-outlined footer-contact-icon">phone</span>
+                <span class="material-symbols-outlined footer-contact-icon"
+                  >phone</span
+                >
                 {{ site().phone }}
               </a>
               <a [href]="'mailto:' + site().email">
-                <span class="material-symbols-outlined footer-contact-icon">mail</span>
+                <span class="material-symbols-outlined footer-contact-icon"
+                  >mail</span
+                >
                 {{ site().email }}
               </a>
               <span>
-                <span class="material-symbols-outlined footer-contact-icon">location_on</span>
+                <span class="material-symbols-outlined footer-contact-icon"
+                  >location_on</span
+                >
                 {{ site().address }}
               </span>
             </div>
@@ -222,7 +245,6 @@ import { AppLocale, isLocale } from "../core/types";
             <a href="#">Terms of Use</a>
           </div>
         </div>
-
       </footer>
     </div>
   `,
@@ -241,14 +263,32 @@ export class PublicShellComponent {
     { path: this.link("/music"), label: this.t("nav.music"), exact: false },
     { path: this.link("/shop"), label: this.t("nav.shop"), exact: false },
     { path: this.link("/tickets"), label: this.t("nav.tickets"), exact: false },
-    { path: this.link("/services"), label: this.t("nav.services"), exact: false },
+    {
+      path: this.link("/services"),
+      label: this.t("nav.services"),
+      exact: false,
+    },
     { path: this.link("/events"), label: this.t("nav.events"), exact: false },
+    { path: this.link("/news"), label: this.t("nav.news"), exact: false },
     { path: this.link("/about"), label: this.t("nav.about"), exact: false },
     { path: this.link("/contact"), label: this.t("nav.contact"), exact: false },
   ]);
 
-  readonly siteName = SITE_SHORT_NAME;
-  readonly abbreviation = SITE_ABBREVIATION;
+  readonly customization = computed(
+    () =>
+      this.content.content()?.customization ?? {
+        brandName: SITE_SHORT_NAME,
+        shortName: SITE_SHORT_NAME,
+        abbreviation: SITE_ABBREVIATION,
+        logoUrl: "/logo-cvc.svg",
+        primaryColor: "#6234d4",
+        secondaryColor: "#c8870d",
+        accentColor: "#2aa89f",
+        heroImage: "/images/cvc/hero-worship.jpg",
+        announcement: "",
+        footerTagline: this.t("footer.tagline"),
+      },
+  );
 
   constructor() {
     this.route.paramMap.subscribe((params) => {

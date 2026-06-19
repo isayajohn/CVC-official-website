@@ -113,7 +113,16 @@ app.put("/api/content", async (request, response) => {
     }
 
     const body = request.body;
-    if (!body?.site || !body?.services?.en || !body?.services?.sw) {
+    if (
+      !body?.site ||
+      !body?.services?.en ||
+      !body?.services?.sw ||
+      !body?.customization ||
+      !body?.contentPages?.en ||
+      !body?.contentPages?.sw ||
+      !body?.news?.en ||
+      !body?.news?.sw
+    ) {
       response.status(400).json({ message: "Invalid content payload" });
       return;
     }

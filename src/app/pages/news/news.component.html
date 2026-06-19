@@ -1,0 +1,40 @@
+<section class="page-hero page-hero-news page-shell">
+  <div class="container narrow-copy">
+    <p class="eyebrow">News</p>
+    <h1>{{ t("news.title") }}</h1>
+    <p class="hero-description">{{ t("news.subtitle") }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container news-grid">
+    @for (article of news(); track article.id) {
+      <article
+        class="card news-card"
+        [class.news-card-featured]="article.featured"
+      >
+        <img
+          [src]="article.image"
+          [alt]="article.title"
+          class="news-card__image"
+        />
+        <div class="news-card__body">
+          <div class="news-card__meta">
+            <span>{{ article.category }}</span>
+            <span>{{ formatDate(article.publishedAt) }}</span>
+          </div>
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.excerpt }}</p>
+          <div class="news-card__footer">
+            <span>{{ article.author }}</span>
+            @if (article.featured) {
+              <strong>{{ t("news.featured") }}</strong>
+            }
+          </div>
+        </div>
+      </article>
+    } @empty {
+      <div class="empty-state">{{ t("news.empty") }}</div>
+    }
+  </div>
+</section>

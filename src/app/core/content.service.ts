@@ -23,16 +23,50 @@ export class ContentService {
       const content = await firstValueFrom(
         this.http.get<ManagedContent>("/api/content"),
       );
-      this.contentState.set(content);
-      return content;
+      const normalized = this.normalizeContent(content);
+      this.contentState.set(normalized);
+      return normalized;
     } catch {
-      this.contentState.set(DEFAULT_MANAGED_CONTENT);
-      return DEFAULT_MANAGED_CONTENT;
+      const fallback = this.normalizeContent(DEFAULT_MANAGED_CONTENT);
+      this.contentState.set(fallback);
+      return fallback;
     }
   }
 
   async saveContent(content: ManagedContent): Promise<void> {
-    await firstValueFrom(this.http.put("/api/content", content));
-    this.contentState.set(content);
+    const normalized = this.normalizeContent(content);
+    await firstValueFrom(this.http.put("/api/content", normalized));
+    this.contentState.set(normalized);
+  }
+
+  private normalizeContent(content: Partial<ManagedContent>): ManagedContent {
+    return {
+      ...DEFAULT_MANAGED_CONTENT,
+      ...content,
+      site: {
+        ...DEFAULT_MANAGED_CONTENT.site,
+        ...content.site,
+        socials: {
+          ...DEFAULT_MANAGED_CONTENT.site.socials,
+          ...content.site?.socials,
+        },
+      },
+      customization: {
+        ...DEFAULT_MANAGED_CONTENT.customization,
+        ...content.customization,
+      },
+      contentPages: {
+        en: content.contentPages?.en ?? DEFAULT_MANAGED_CONTENT.contentPages.en,
+        sw: content.contentPages?.sw ?? DEFAULT_MANAGED_CONTENT.contentPages.sw,
+      },
+      news: {
+        en: content.news?.en ?? DEFAULT_MANAGED_CONTENT.news.en,
+        sw: content.news?.sw ?? DEFAULT_MANAGED_CONTENT.news.sw,
+      },
+      services: {
+        en: content.services?.en ?? DEFAULT_MANAGED_CONTENT.services.en,
+        sw: content.services?.sw ?? DEFAULT_MANAGED_CONTENT.services.sw,
+      },
+    };
   }
 }

@@ -20,6 +20,24 @@ export class AdminDashboardPageComponent {
   readonly servicesCount = computed(
     () => this.content.content()?.services[this.locale()]?.items.length ?? 0,
   );
+  readonly pagesCount = computed(
+    () => this.content.content()?.contentPages[this.locale()]?.length ?? 0,
+  );
+  readonly publishedNewsCount = computed(
+    () =>
+      this.content
+        .content()
+        ?.news[
+          this.locale()
+        ]?.filter((article) => article.status === "published").length ?? 0,
+  );
+  readonly featuredNews = computed(
+    () =>
+      this.content
+        .content()
+        ?.news[this.locale()]?.filter((article) => article.featured)
+        .slice(0, 3) ?? [],
+  );
 
   constructor() {
     void this.content.loadContent();

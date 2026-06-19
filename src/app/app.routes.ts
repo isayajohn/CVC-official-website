@@ -9,6 +9,7 @@ import { ContactPageComponent } from "./pages/contact/contact.component";
 import { EventsPageComponent } from "./pages/events/events.component";
 import { HomePageComponent } from "./pages/home/home.component";
 import { MusicPageComponent } from "./pages/music/music.component";
+import { NewsPageComponent } from "./pages/news/news.component";
 import { ServicesPageComponent } from "./pages/services/services.component";
 import { ShopPageComponent } from "./pages/shop/shop.component";
 import { TicketsPageComponent } from "./pages/tickets/tickets.component";
@@ -26,6 +27,13 @@ export const routes: Routes = [
     children: [
       { path: "", component: AdminDashboardPageComponent },
       { path: "content", component: AdminContentPageComponent },
+      {
+        path: "components",
+        loadComponent: () =>
+          import("./shared/common-components/common-components.component").then(
+            (m) => m.CommonComponentsComponent,
+          ),
+      },
     ],
   },
   {
@@ -38,6 +46,7 @@ export const routes: Routes = [
       { path: "tickets", component: TicketsPageComponent },
       { path: "services", component: ServicesPageComponent },
       { path: "events", component: EventsPageComponent },
+      { path: "news", component: NewsPageComponent },
       { path: "about", component: AboutPageComponent },
       { path: "contact", component: ContactPageComponent },
     ],

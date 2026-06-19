@@ -24,6 +24,7 @@ export const MESSAGES = {
       tickets: "Tickets",
       services: "Services",
       events: "Events",
+      news: "News",
       about: "About",
       contact: "Contact",
       adminLogin: "Admin Login",
@@ -71,6 +72,13 @@ export const MESSAGES = {
       time: "Time",
       price: "Price",
       getTickets: "Get Tickets",
+    },
+    news: {
+      title: "News",
+      subtitle:
+        "Latest choir announcements, ministry updates, releases, and stories.",
+      featured: "Featured",
+      empty: "No news has been published yet.",
     },
     about: {
       title: "About Us",
@@ -135,7 +143,8 @@ export const MESSAGES = {
       contact: "Get in Touch",
       followUs: "Follow Us",
       newsletter: "Stay in the Loop",
-      newsletterSub: "Be the first to hear about upcoming concerts and new music releases.",
+      newsletterSub:
+        "Be the first to hear about upcoming concerts and new music releases.",
       emailPlaceholder: "Your email address",
       subscribe: "Subscribe",
       copyright: "© 2026 AIC Chang'ombe Choir (CVC). All rights reserved.",
@@ -156,6 +165,8 @@ export const MESSAGES = {
       saveFailed: "Save failed. Please try again.",
       loadFailed: "Failed to load content.",
       siteContact: "Site Contact & Social",
+      customization: "Customization",
+      newsManager: "News Manager",
       servicesLabel: "Services",
       ctaTitle: "CTA Title",
       ctaDescription: "CTA Description",
@@ -190,6 +201,7 @@ export const MESSAGES = {
       tickets: "Tiketi",
       services: "Huduma",
       events: "Matukio",
+      news: "Habari",
       about: "Kuhusu",
       contact: "Mawasiliano",
       adminLogin: "Ingia Admin",
@@ -237,6 +249,13 @@ export const MESSAGES = {
       time: "Muda",
       price: "Bei",
       getTickets: "Pata Tiketi",
+    },
+    news: {
+      title: "Habari",
+      subtitle:
+        "Matangazo ya kwaya, taarifa za huduma, matoleo mapya, na simulizi.",
+      featured: "Iliyoangaziwa",
+      empty: "Hakuna habari iliyochapishwa bado.",
     },
     about: {
       title: "Kuhusu Sisi",
@@ -301,7 +320,8 @@ export const MESSAGES = {
       contact: "Wasiliana Nasi",
       followUs: "Tufuate",
       newsletter: "Baki Nasi",
-      newsletterSub: "Kuwa wa kwanza kusikia kuhusu tamasha zijazo na muziki mpya.",
+      newsletterSub:
+        "Kuwa wa kwanza kusikia kuhusu tamasha zijazo na muziki mpya.",
       emailPlaceholder: "Anwani yako ya barua pepe",
       subscribe: "Jiandikishe",
       copyright: "© 2026 AIC Chang'ombe Choir (CVC). Haki zote zimehifadhiwa.",
@@ -322,6 +342,8 @@ export const MESSAGES = {
       saveFailed: "Kuhifadhi kumefeli. Jaribu tena.",
       loadFailed: "Imeshindwa kupakia maudhui.",
       siteContact: "Mawasiliano na Mitandao ya Kijamii",
+      customization: "Ubinafsishaji",
+      newsManager: "Msimamizi wa Habari",
       servicesLabel: "Huduma",
       ctaTitle: "Kichwa cha CTA",
       ctaDescription: "Maelezo ya CTA",

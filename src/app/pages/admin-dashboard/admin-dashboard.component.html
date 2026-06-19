@@ -4,39 +4,114 @@
   <p>{{ t("admin.welcomeSubtitle") }}</p>
 </section>
 
-<section class="stats-grid">
-  <article class="card stat-card">
-    <span>Services</span>
-    <strong>{{ servicesCount() }}</strong>
+<section class="admin-dashboard-grid">
+  <article class="admin-metric-card">
+    <span class="material-icons">web</span>
+    <div>
+      <p>Content Pages</p>
+      <strong>{{ pagesCount() }}</strong>
+    </div>
   </article>
-  <article class="card stat-card">
-    <span>Locale</span>
-    <strong>{{ locale().toUpperCase() }}</strong>
+
+  <article class="admin-metric-card">
+    <span class="material-icons">newspaper</span>
+    <div>
+      <p>Published News</p>
+      <strong>{{ publishedNewsCount() }}</strong>
+    </div>
   </article>
-  <article class="card stat-card">
-    <span>Contact Email</span>
-    <strong>{{ site().email }}</strong>
+
+  <article class="admin-metric-card">
+    <span class="material-icons">room_service</span>
+    <div>
+      <p>Services</p>
+      <strong>{{ servicesCount() }}</strong>
+    </div>
+  </article>
+
+  <article class="admin-metric-card">
+    <span class="material-icons">language</span>
+    <div>
+      <p>Locale</p>
+      <strong>{{ locale().toUpperCase() }}</strong>
+    </div>
   </article>
 </section>
 
-<section class="card-grid card-grid-2">
-  <article class="card">
-    <p class="eyebrow">Next Step</p>
-    <h3>{{ t("admin.contentManager") }}</h3>
-    <p>
-      Update service cards, CTA copy, and contact details used across the public
-      site.
-    </p>
-    <a class="btn btn-primary" [routerLink]="link('/admin/content')">{{
-      t("admin.contentManager")
-    }}</a>
+<section class="admin-dashboard-columns">
+  <article class="admin-panel">
+    <div class="admin-panel__header">
+      <div>
+        <p class="eyebrow">Workflow</p>
+        <h3>Manage Content</h3>
+      </div>
+      <a class="btn btn-primary" [routerLink]="link('/admin/content')">
+        Open Editor
+      </a>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Items</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pages</td>
+            <td>{{ pagesCount() }}</td>
+            <td><span class="status-pill published">Ready</span></td>
+          </tr>
+          <tr>
+            <td>News</td>
+            <td>{{ publishedNewsCount() }}</td>
+            <td><span class="status-pill published">Published</span></td>
+          </tr>
+          <tr>
+            <td>Services</td>
+            <td>{{ servicesCount() }}</td>
+            <td><span class="status-pill draft">Editable</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </article>
 
-  <article class="card">
-    <p class="eyebrow">Live Site</p>
-    <h3>Current Contact Details</h3>
-    <p>{{ site().phone }}</p>
-    <p>{{ site().email }}</p>
-    <p>{{ site().address }}</p>
+  <article class="admin-panel">
+    <div class="admin-panel__header">
+      <div>
+        <p class="eyebrow">Live Site</p>
+        <h3>Current Contact</h3>
+      </div>
+    </div>
+
+    <div class="admin-contact-list">
+      <div>
+        <span class="material-icons">call</span>
+        <strong>{{ site().phone }}</strong>
+      </div>
+      <div>
+        <span class="material-icons">mail</span>
+        <strong>{{ site().email }}</strong>
+      </div>
+      <div>
+        <span class="material-icons">location_on</span>
+        <strong>{{ site().address }}</strong>
+      </div>
+    </div>
+
+    <div class="admin-feature-list">
+      @for (article of featuredNews(); track article.id) {
+        <div>
+          <span>{{ article.category }}</span>
+          <strong>{{ article.title }}</strong>
+        </div>
+      } @empty {
+        <p>No featured news yet.</p>
+      }
+    </div>
   </article>
 </section>

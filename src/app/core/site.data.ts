@@ -388,6 +388,160 @@ export const DEFAULT_MANAGED_CONTENT: ManagedContent = {
       youtube: CVC_YOUTUBE_URL,
     },
   },
+  customization: {
+    brandName: SITE_NAME,
+    shortName: SITE_SHORT_NAME,
+    abbreviation: SITE_ABBREVIATION,
+    logoUrl: "/logo-cvc.svg",
+    primaryColor: "#6234d4",
+    secondaryColor: "#c8870d",
+    accentColor: "#2aa89f",
+    heroImage: "/images/cvc/hero-worship.jpg",
+    announcement: "New worship releases and events are updated every month.",
+    footerTagline: "Lifting Voices in Worship",
+  },
+  contentPages: {
+    en: [
+      {
+        id: "home",
+        slug: "",
+        status: "published",
+        navLabel: "Home",
+        title: "AIC Chang'ombe Choir",
+        subtitle: "Lifting voices in worship across Tanzania and beyond.",
+        heroImage: "/images/cvc/hero-worship.jpg",
+        seoTitle: "AIC Chang'ombe Choir",
+        seoDescription:
+          "Music, ministry, events, services, and news from AIC Chang'ombe Choir.",
+      },
+      {
+        id: "services",
+        slug: "services",
+        status: "published",
+        navLabel: "Services",
+        title: "Our Services",
+        subtitle:
+          "Recording, venues, event management, and ticketing for your ministry and community events.",
+        heroImage: "/images/pexels/services-1.jpg",
+        seoTitle: "Choir Services",
+        seoDescription:
+          "Book recording, event venue, event management, and ticketing services.",
+      },
+      {
+        id: "news",
+        slug: "news",
+        status: "published",
+        navLabel: "News",
+        title: "News",
+        subtitle:
+          "Latest choir announcements, ministry updates, releases, and stories.",
+        heroImage: "/images/cvc/about-hero-choir.jpg",
+        seoTitle: "Choir News",
+        seoDescription:
+          "Read the latest announcements and stories from AIC Chang'ombe Choir.",
+      },
+      {
+        id: "contact",
+        slug: "contact",
+        status: "published",
+        navLabel: "Contact",
+        title: "Let's connect",
+        subtitle:
+          "Reach the choir for bookings, ministry invitations, music questions, and partnership conversations.",
+        heroImage: "/images/cvc/about-hero.jpg",
+        seoTitle: "Contact AIC Chang'ombe Choir",
+        seoDescription:
+          "Contact AIC Chang'ombe Choir for bookings, inquiries, and partnerships.",
+      },
+    ],
+    sw: [
+      {
+        id: "home",
+        slug: "",
+        status: "published",
+        navLabel: "Nyumbani",
+        title: "Kwaya ya AIC Chang'ombe",
+        subtitle: "Kuinua sauti za ibada Tanzania na kwingineko.",
+        heroImage: "/images/cvc/hero-worship.jpg",
+        seoTitle: "Kwaya ya AIC Chang'ombe",
+        seoDescription:
+          "Muziki, huduma, matukio, huduma za kwaya, na habari kutoka Kwaya ya AIC Chang'ombe.",
+      },
+      {
+        id: "services",
+        slug: "services",
+        status: "published",
+        navLabel: "Huduma",
+        title: "Huduma Zetu",
+        subtitle:
+          "Kurekodi, ukumbi, usimamizi wa matukio, na huduma za tiketi kwa jamii yako.",
+        heroImage: "/images/pexels/services-1.jpg",
+        seoTitle: "Huduma za Kwaya",
+        seoDescription:
+          "Hifadhi huduma za kurekodi, ukumbi, usimamizi wa matukio, na tiketi.",
+      },
+      {
+        id: "news",
+        slug: "news",
+        status: "published",
+        navLabel: "Habari",
+        title: "Habari",
+        subtitle:
+          "Matangazo ya kwaya, taarifa za huduma, matoleo mapya, na simulizi.",
+        heroImage: "/images/cvc/about-hero-choir.jpg",
+        seoTitle: "Habari za Kwaya",
+        seoDescription:
+          "Soma matangazo na simulizi mpya kutoka Kwaya ya AIC Chang'ombe.",
+      },
+      {
+        id: "contact",
+        slug: "contact",
+        status: "published",
+        navLabel: "Mawasiliano",
+        title: "Tuwasiliane",
+        subtitle:
+          "Wasiliana na kwaya kwa ajili ya huduma, mialiko, maswali ya muziki, na ushirikiano.",
+        heroImage: "/images/cvc/about-hero.jpg",
+        seoTitle: "Wasiliana na Kwaya ya AIC Chang'ombe",
+        seoDescription:
+          "Wasiliana na Kwaya ya AIC Chang'ombe kwa huduma, maswali, na ushirikiano.",
+      },
+    ],
+  },
+  news: {
+    en: [
+      {
+        id: "news-2026-worship-season",
+        slug: "new-worship-season",
+        status: "published",
+        featured: true,
+        publishedAt: "2026-06-01",
+        author: "CVC Team",
+        category: "Ministry",
+        image: "/images/cvc/hero-worship.jpg",
+        title: "A New Worship Season Begins",
+        excerpt:
+          "Follow the choir as new music, ministry moments, and worship gatherings unfold this season.",
+        body: "AIC Chang'ombe Choir is preparing new worship moments for the community, including live gatherings, music releases, and ministry updates. Stay connected through the website for announcements and behind-the-scenes stories.",
+      },
+    ],
+    sw: [
+      {
+        id: "news-2026-worship-season",
+        slug: "msimu-mpya-wa-ibada",
+        status: "published",
+        featured: true,
+        publishedAt: "2026-06-01",
+        author: "Timu ya CVC",
+        category: "Huduma",
+        image: "/images/cvc/hero-worship.jpg",
+        title: "Msimu Mpya wa Ibada Waanza",
+        excerpt:
+          "Fuatilia kwaya kupitia muziki mpya, huduma, na mikusanyiko ya ibada msimu huu.",
+        body: "Kwaya ya AIC Chang'ombe inaandaa nyakati mpya za ibada kwa jamii, ikiwemo mikusanyiko ya moja kwa moja, matoleo ya muziki, na taarifa za huduma. Endelea kufuatilia tovuti kwa matangazo na simulizi za nyuma ya pazia.",
+      },
+    ],
+  },
   services: {
     en: {
       subtitle:
