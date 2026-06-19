@@ -18,68 +18,101 @@ import { isLocale } from "../core/types";
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   template: `
-    <div class="admin-layout">
+    <div class="admin-layout" [class.sidebar-open]="isSidebarOpen">
+      <button
+        type="button"
+        class="admin-backdrop"
+        aria-label="Close admin navigation"
+        (click)="closeSidebar()"
+      ></button>
+
       <aside class="admin-sidebar">
         <div class="admin-sidebar__brand">
           <img src="/logo-cvc.svg" alt="CVC logo" />
           <div>
-            <p class="eyebrow">CVC Admin</p>
-            <h1>CMS</h1>
+            <span>CVC Admin</span>
+            <strong>System Admin</strong>
           </div>
         </div>
 
-        <div class="admin-sidebar__scroll">
-          <p class="admin-nav-label">Workspace</p>
-          <nav class="admin-nav">
-            <a
-              [routerLink]="link('/admin')"
-              routerLinkActive="is-active"
-              [routerLinkActiveOptions]="{ exact: true }"
-            >
-              <span class="material-icons">dashboard</span>
-              {{ t("admin.dashboard") }}
-            </a>
-            <a
-              [routerLink]="link('/admin/content')"
-              routerLinkActive="is-active"
-            >
-              <span class="material-icons">article</span>
-              {{ t("admin.contentManager") }}
-            </a>
-            <a
-              [routerLink]="link('/admin/components')"
-              routerLinkActive="is-active"
-            >
-              <span class="material-icons">widgets</span>
-              Components
-            </a>
-          </nav>
+        <nav class="admin-sidebar__scroll" aria-label="Admin menu">
+          <div class="admin-nav-group">
+            <p class="admin-nav-label">Menu</p>
+            <div class="admin-nav">
+              <a
+                [routerLink]="link('/admin')"
+                routerLinkActive="is-active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="closeSidebar()"
+              >
+                <span class="material-icons">grid_view</span>
+                {{ t("admin.dashboard") }}
+              </a>
+              <a
+                [routerLink]="link('/admin/content')"
+                routerLinkActive="is-active"
+                (click)="closeSidebar()"
+              >
+                <span class="material-icons">article</span>
+                {{ t("admin.contentManager") }}
+              </a>
+              <a
+                [routerLink]="link('/admin/components')"
+                routerLinkActive="is-active"
+                (click)="closeSidebar()"
+              >
+                <span class="material-icons">widgets</span>
+                Components
+              </a>
+            </div>
+          </div>
 
-          <p class="admin-nav-label">Website</p>
-          <nav class="admin-nav">
-            <a [routerLink]="link()" class="back-link">
-              <span class="material-icons">open_in_new</span>
-              {{ t("common.backToSite") }}
-            </a>
-          </nav>
+          <div class="admin-nav-group">
+            <p class="admin-nav-label">Website</p>
+            <div class="admin-nav">
+              <a [routerLink]="link()" class="back-link">
+                <span class="material-icons">open_in_new</span>
+                {{ t("common.backToSite") }}
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="admin-sidebar__quick-card">
+          <span class="material-icons">auto_awesome</span>
+          <strong>System Console</strong>
+          <p>Manage pages, services, news, and live CVC contact details.</p>
         </div>
 
         <div class="admin-sidebar__footer">
           <span class="admin-user-avatar">{{ userInitial }}</span>
           <div>
             <strong>{{ username }}</strong>
-            <button type="button" (click)="logout()">
-              {{ t("admin.signOut") }}
-            </button>
+            <span>Administrator</span>
           </div>
+          <button type="button" aria-label="Sign out" (click)="logout()">
+            <span class="material-icons">logout</span>
+          </button>
         </div>
       </aside>
 
       <section class="admin-workspace">
         <header class="admin-topbar">
-          <div>
-            <p class="eyebrow">Admin CMS</p>
-            <h2>{{ pageTitle }}</h2>
+          <div class="admin-topbar__title">
+            <button
+              type="button"
+              class="admin-menu-toggle"
+              aria-label="Toggle admin navigation"
+              (click)="toggleSidebar()"
+            >
+              <span class="material-icons">{{
+                isSidebarOpen ? "close" : "menu"
+              }}</span>
+            </button>
+            <div>
+              <p>{{ pageEyebrow }}</p>
+              <h2>{{ pageTitle }}</h2>
+            </div>
           </div>
 
           <div class="admin-topbar__actions">
@@ -87,7 +120,12 @@ import { isLocale } from "../core/types";
               <span class="material-icons">search</span>
               <input type="search" placeholder="Search content" />
             </label>
-            <a class="btn btn-secondary" [routerLink]="link('/admin/content')">
+            <span class="admin-locale-pill">{{ localeLabel }}</span>
+            <a
+              class="btn btn-secondary"
+              [routerLink]="link('/admin/content')"
+              (click)="closeSidebar()"
+            >
               <span class="material-icons button-icon">add</span>
               New Content
             </a>
@@ -106,7 +144,10 @@ export class AdminShellComponent {
   private readonly router = inject(Router);
   private readonly translation = inject(TranslationService);
   private readonly auth = inject(AuthService);
+
   pageTitle = this.t("admin.dashboard");
+  pageEyebrow = "System Admin";
+  isSidebarOpen = false;
 
   constructor() {
     this.route.paramMap.subscribe((params) => {
@@ -124,7 +165,10 @@ export class AdminShellComponent {
           (event): event is NavigationEnd => event instanceof NavigationEnd,
         ),
       )
-      .subscribe((event) => this.setPageTitle(event.urlAfterRedirects));
+      .subscribe((event) => {
+        this.setPageTitle(event.urlAfterRedirects);
+        this.closeSidebar();
+      });
   }
 
   get username(): string {
@@ -135,12 +179,24 @@ export class AdminShellComponent {
     return this.username.slice(0, 1).toUpperCase();
   }
 
+  get localeLabel(): string {
+    return this.translation.locale().toUpperCase();
+  }
+
   t(path: string): string {
     return this.translation.t(path);
   }
 
   link(path = ""): string {
     return this.translation.path(path);
+  }
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebar(): void {
+    this.isSidebarOpen = false;
   }
 
   async logout(): Promise<void> {
@@ -151,14 +207,17 @@ export class AdminShellComponent {
   private setPageTitle(url: string): void {
     if (url.includes("/admin/content")) {
       this.pageTitle = this.t("admin.contentManager");
+      this.pageEyebrow = "Content";
       return;
     }
 
     if (url.includes("/admin/components")) {
       this.pageTitle = "Components";
+      this.pageEyebrow = "Design System";
       return;
     }
 
     this.pageTitle = this.t("admin.dashboard");
+    this.pageEyebrow = "System Admin";
   }
 }
