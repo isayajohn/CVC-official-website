@@ -1,153 +1,19 @@
-import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from "@angular/router";
-import { filter } from "rxjs";
-import { AuthService } from "../core/auth.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TranslationService } from "../core/translation.service";
 import { isLocale } from "../core/types";
+import { AppLayoutComponent } from "../admin-shared/layout/app-layout/app-layout.component";
 
 @Component({
   selector: "app-admin-shell",
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
-  template: `
-    <div class="admin-layout" [class.sidebar-open]="isSidebarOpen">
-      <button
-        type="button"
-        class="admin-backdrop"
-        aria-label="Close admin navigation"
-        (click)="closeSidebar()"
-      ></button>
-
-      <aside class="admin-sidebar">
-        <div class="admin-sidebar__brand">
-          <img src="/logo-cvc.svg" alt="CVC logo" />
-          <div>
-            <span>CVC Admin</span>
-            <strong>System Admin</strong>
-          </div>
-        </div>
-
-        <nav class="admin-sidebar__scroll" aria-label="Admin menu">
-          <div class="admin-nav-group">
-            <p class="admin-nav-label">Menu</p>
-            <div class="admin-nav">
-              <a
-                [routerLink]="link('/admin')"
-                routerLinkActive="is-active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="closeSidebar()"
-              >
-                <span class="material-icons">grid_view</span>
-                {{ t("admin.dashboard") }}
-              </a>
-              <a
-                [routerLink]="link('/admin/content')"
-                routerLinkActive="is-active"
-                (click)="closeSidebar()"
-              >
-                <span class="material-icons">article</span>
-                {{ t("admin.contentManager") }}
-              </a>
-              <a
-                [routerLink]="link('/admin/components')"
-                routerLinkActive="is-active"
-                (click)="closeSidebar()"
-              >
-                <span class="material-icons">widgets</span>
-                Components
-              </a>
-            </div>
-          </div>
-
-          <div class="admin-nav-group">
-            <p class="admin-nav-label">Website</p>
-            <div class="admin-nav">
-              <a [routerLink]="link()" class="back-link">
-                <span class="material-icons">open_in_new</span>
-                {{ t("common.backToSite") }}
-              </a>
-            </div>
-          </div>
-        </nav>
-
-        <div class="admin-sidebar__quick-card">
-          <span class="material-icons">auto_awesome</span>
-          <strong>System Console</strong>
-          <p>Manage pages, services, news, and live CVC contact details.</p>
-        </div>
-
-        <div class="admin-sidebar__footer">
-          <span class="admin-user-avatar">{{ userInitial }}</span>
-          <div>
-            <strong>{{ username }}</strong>
-            <span>Administrator</span>
-          </div>
-          <button type="button" aria-label="Sign out" (click)="logout()">
-            <span class="material-icons">logout</span>
-          </button>
-        </div>
-      </aside>
-
-      <section class="admin-workspace">
-        <header class="admin-topbar">
-          <div class="admin-topbar__title">
-            <button
-              type="button"
-              class="admin-menu-toggle"
-              aria-label="Toggle admin navigation"
-              (click)="toggleSidebar()"
-            >
-              <span class="material-icons">{{
-                isSidebarOpen ? "close" : "menu"
-              }}</span>
-            </button>
-            <div>
-              <p>{{ pageEyebrow }}</p>
-              <h2>{{ pageTitle }}</h2>
-            </div>
-          </div>
-
-          <div class="admin-topbar__actions">
-            <label class="admin-search">
-              <span class="material-icons">search</span>
-              <input type="search" placeholder="Search content" />
-            </label>
-            <span class="admin-locale-pill">{{ localeLabel }}</span>
-            <a
-              class="btn btn-secondary"
-              [routerLink]="link('/admin/content')"
-              (click)="closeSidebar()"
-            >
-              <span class="material-icons button-icon">add</span>
-              New Content
-            </a>
-          </div>
-        </header>
-
-        <main class="admin-main">
-          <router-outlet />
-        </main>
-      </section>
-    </div>
-  `,
+  imports: [AppLayoutComponent],
+  template: `<app-layout />`,
 })
 export class AdminShellComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly translation = inject(TranslationService);
-  private readonly auth = inject(AuthService);
-
-  pageTitle = this.t("admin.dashboard");
-  pageEyebrow = "System Admin";
-  isSidebarOpen = false;
 
   constructor() {
     this.route.paramMap.subscribe((params) => {
@@ -157,67 +23,5 @@ export class AdminShellComponent {
         void this.router.navigateByUrl(`/${locale}/admin`);
       }
     });
-
-    this.setPageTitle(this.router.url);
-    this.router.events
-      .pipe(
-        filter(
-          (event): event is NavigationEnd => event instanceof NavigationEnd,
-        ),
-      )
-      .subscribe((event) => {
-        this.setPageTitle(event.urlAfterRedirects);
-        this.closeSidebar();
-      });
-  }
-
-  get username(): string {
-    return this.auth.username() ?? "Admin";
-  }
-
-  get userInitial(): string {
-    return this.username.slice(0, 1).toUpperCase();
-  }
-
-  get localeLabel(): string {
-    return this.translation.locale().toUpperCase();
-  }
-
-  t(path: string): string {
-    return this.translation.t(path);
-  }
-
-  link(path = ""): string {
-    return this.translation.path(path);
-  }
-
-  toggleSidebar(): void {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
-
-  closeSidebar(): void {
-    this.isSidebarOpen = false;
-  }
-
-  async logout(): Promise<void> {
-    await this.auth.logout();
-    await this.router.navigateByUrl(this.link("/admin-login"));
-  }
-
-  private setPageTitle(url: string): void {
-    if (url.includes("/admin/content")) {
-      this.pageTitle = this.t("admin.contentManager");
-      this.pageEyebrow = "Content";
-      return;
-    }
-
-    if (url.includes("/admin/components")) {
-      this.pageTitle = "Components";
-      this.pageEyebrow = "Design System";
-      return;
-    }
-
-    this.pageTitle = this.t("admin.dashboard");
-    this.pageEyebrow = "System Admin";
   }
 }
