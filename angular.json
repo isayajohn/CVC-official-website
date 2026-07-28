@@ -25,7 +25,14 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/material-theme.scss", "src/styles.css"]
+            "styles": [
+              "src/material-theme.scss",
+              "node_modules/swiper/swiper-bundle.css",
+              "node_modules/@awesome.me/webawesome/dist/styles/themes/awesome.css",
+              "node_modules/@awesome.me/webawesome/dist/styles/color/palettes/default.css",
+              "node_modules/flatpickr/dist/flatpickr.css",
+              "src/styles.css"
+            ]
           },
           "configurations": {
             "production": {

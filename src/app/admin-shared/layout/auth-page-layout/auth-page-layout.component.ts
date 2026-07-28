@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GridShapeComponent } from '../../components/common/grid-shape/grid-shape.component';
 import { RouterModule } from '@angular/router';
 import { ThemeToggleTwoComponent } from '../../components/common/theme-toggle-two/theme-toggle-two.component';
+import { SITE_SHORT_NAME } from '../../../core/site.data';
 
 @Component({
   selector: 'app-auth-page-layout',
@@ -14,5 +15,5 @@ import { ThemeToggleTwoComponent } from '../../components/common/theme-toggle-tw
   styles: ``
 })
 export class AuthPageLayoutComponent {
-
+  readonly siteName = SITE_SHORT_NAME;
 }

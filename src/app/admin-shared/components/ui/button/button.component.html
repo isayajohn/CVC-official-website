@@ -1,20 +1,32 @@
 <button
   type="button"
   [ngClass]="
-    'inline-flex items-center justify-center gap-2 rounded-lg transition ' +
+    'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-150 ' +
     className + ' ' +
     sizeClasses + ' ' +
     variantClasses + ' ' +
     disabledClasses
   "
-  [disabled]="disabled"
+  [disabled]="isDisabled"
+  [attr.aria-busy]="loading || null"
   (click)="onClick($event)"
 >
-  @if (startIcon) {
+  @if (loading) {
+  <svg
+    class="size-4 animate-spin"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4z"></path>
+  </svg>
+  } @else if (startIcon) {
   <span class="flex items-center" [innerHTML]="startIcon | safeHtml"></span>
   }
   <ng-content></ng-content>
-  @if (endIcon) {
+  @if (endIcon && !loading) {
   <span class="flex items-center" [innerHTML]="endIcon | safeHtml"></span>
   }
 </button>

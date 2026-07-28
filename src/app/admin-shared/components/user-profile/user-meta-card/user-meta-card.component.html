@@ -1,6 +1,6 @@
 
 
-<div class="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
+<div class="p-5 border border-gray-200 rounded-xl dark:border-gray-800 lg:p-6">
   <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
     <div class="flex flex-col items-center w-full gap-6 xl:flex-row">
       <div class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
@@ -137,7 +137,7 @@
   (close)="closeModal()"
   className="max-w-[700px] m-4"
 >
-  <div class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
+  <div class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-xl bg-white p-4 dark:bg-gray-900 lg:p-11">
     <div class="px-2 pr-14">
       <h4 class="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
         Edit Personal Information
@@ -154,19 +154,19 @@
           </h5>
           <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
             <div>
-              <label>Facebook</label>
+              <app-label>Facebook</app-label>
               <app-input-field type="text" [value]="user.social.facebook" />
             </div>
             <div>
-              <label>X.com</label>
+              <app-label>X.com</app-label>
               <app-input-field type="text" [value]="user.social.x" />
             </div>
             <div>
-              <label>Linkedin</label>
+              <app-label>Linkedin</app-label>
               <app-input-field type="text" [value]="user.social.linkedin" />
             </div>
             <div>
-              <label>Instagram</label>
+              <app-label>Instagram</app-label>
               <app-input-field type="text" [value]="user.social.instagram" />
             </div>
           </div>
@@ -177,23 +177,23 @@
           </h5>
           <div class="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
             <div class="col-span-2 lg:col-span-1">
-              <label>First Name</label>
+              <app-label>First Name</app-label>
               <app-input-field type="text" [value]="user.firstName" />
             </div>
             <div class="col-span-2 lg:col-span-1">
-              <label>Last Name</label>
+              <app-label>Last Name</app-label>
               <app-input-field type="text" [value]="user.lastName" />
             </div>
             <div class="col-span-2 lg:col-span-1">
-              <label>Email Address</label>
+              <app-label>Email Address</app-label>
               <app-input-field type="text" [value]="user.email" />
             </div>
             <div class="col-span-2 lg:col-span-1">
-              <label>Phone</label>
+              <app-label>Phone</app-label>
               <app-input-field type="text" [value]="user.phone" />
             </div>
             <div class="col-span-2">
-              <label>Bio</label>
+              <app-label>Bio</app-label>
               <app-input-field type="text" [value]="user.bio" />
             </div>
           </div>

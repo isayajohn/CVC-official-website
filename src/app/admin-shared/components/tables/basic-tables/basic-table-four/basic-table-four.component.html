@@ -1,4 +1,4 @@
-<div class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pb-3 pt-4 dark:border-white/[0.05] dark:bg-white/[0.03] sm:px-6">
+<div class="overflow-hidden rounded-xl border border-gray-200 bg-white px-5 pb-3 pt-4 dark:border-white/[0.05] dark:bg-white/[0.03] sm:px-6">
   <div class="flex justify-between gap-2 mb-4 sm:items-center">
     <div>
       <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
@@ -95,12 +95,7 @@
             </div>
           </td>
           <td class="py-3">
-            <app-badge
-              size="sm"
-              [color]="item.status === 'Success' ? 'success' : item.status === 'Pending' ? 'warning' : 'error'"
-            >
-              {{item.status}}
-            </app-badge>
+            <app-status-badge [status]="item.status" size="sm" />
           </td>
         </tr>
         }

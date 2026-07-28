@@ -4,13 +4,15 @@ import { ModalService } from '../../../services/modal.service';
 
 import { ModalComponent } from '../../ui/modal/modal.component';
 import { ButtonComponent } from '../../ui/button/button.component';
+import { LabelComponent } from '../../form/label/label.component';
 
 @Component({
   selector: 'app-user-meta-card',
   imports: [
     ModalComponent,
     InputFieldComponent,
-    ButtonComponent
+    ButtonComponent,
+    LabelComponent
 ],
   templateUrl: './user-meta-card.component.html',
   styles: ``

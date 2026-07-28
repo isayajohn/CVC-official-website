@@ -54,12 +54,7 @@
             </div>
           </td>
           <td class="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-            <app-badge
-              size="sm"
-              [color]="getBadgeColor(order.status)"
-            >
-              {{ order.status }}
-            </app-badge>
+            <app-status-badge [status]="order.status" size="sm" />
           </td>
           <td class="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
             {{ order.budget }}

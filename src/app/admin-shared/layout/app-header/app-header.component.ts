@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  ViewChild,
+  signal,
+} from "@angular/core";
 import { SidebarService } from "../../services/sidebar.service";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -21,10 +27,18 @@ export class AppHeaderComponent {
   isApplicationMenuOpen = false;
   readonly isMobileOpen$;
 
+  /** Subtle elevation once the page scrolls — a light spatial-depth cue, not a permanent shadow. */
+  readonly scrolled = signal(false);
+
   @ViewChild("searchInput") searchInput!: ElementRef<HTMLInputElement>;
 
   constructor(public sidebarService: SidebarService) {
     this.isMobileOpen$ = this.sidebarService.isMobileOpen$;
+  }
+
+  @HostListener("window:scroll")
+  onWindowScroll() {
+    this.scrolled.set(window.scrollY > 4);
   }
 
   handleToggle() {

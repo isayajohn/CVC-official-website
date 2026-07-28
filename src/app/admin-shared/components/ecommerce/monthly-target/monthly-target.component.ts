@@ -45,7 +45,10 @@ export class MonthlyTargetComponent {
           fontSize: '36px',
           fontWeight: '600',
           offsetY: -40,
-          color: '#1D2939',
+          // Mid-gray instead of near-black so the label stays legible
+          // in both light and dark mode (this chart's text color isn't
+          // reactive to the app's dark-mode toggle).
+          color: '#667085',
           formatter: (val: number) => `${val}%`,
         },
       },
@@ -53,13 +56,13 @@ export class MonthlyTargetComponent {
   };
   public fill: ApexFill = {
     type: 'solid',
-    colors: ['#465FFF'],
+    colors: ['#6234D4'],
   };
   public stroke: ApexStroke = {
     lineCap: 'round',
   };
   public labels: string[] = ['Progress'];
-  public colors: string[] = ['#465FFF'];
+  public colors: string[] = ['#6234D4'];
 
   isOpen = false;
 

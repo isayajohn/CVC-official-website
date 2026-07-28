@@ -1,12 +1,37 @@
-@import "tailwindcss";
-@import "swiper/css/bundle";
-@import "@awesome.me/webawesome/dist/styles/themes/awesome.css";
-@import "@awesome.me/webawesome/dist/styles/color/palettes/default.css";
+/* swiper, webawesome, and flatpickr's CSS moved to angular.json's "styles"
+   array — each is compiled as its own unit there, so their internal
+   @import chains no longer collide with each other or with Tailwind's.
+   Keep this file down to the Google Fonts + Tailwind + our own CSS. */
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
+
+/* Retint flatpickr's default accent blue to the app's brand purple. */
+.flatpickr-day.selected,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay {
+  background: #6234d4;
+  border-color: #6234d4;
+}
+.flatpickr-day.selected.startRange,
+.flatpickr-day.selected.endRange,
+.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)) {
+  box-shadow: -10px 0 0 #6234d4;
+}
+.flatpickr-day.week.selected {
+  box-shadow:
+    -5px 0 0 #6234d4,
+    5px 0 0 #6234d4;
+}
+.flatpickr-day.today {
+  border-color: #6234d4;
+}
 
 @theme {
   --font-*: initial;
@@ -44,18 +69,20 @@
   --text-theme-xs: 12px;
   --text-theme-xs--line-height: 18px;
 
-  --color-brand-25: #f2f7ff;
-  --color-brand-50: #ecf3ff;
-  --color-brand-100: #dde9ff;
-  --color-brand-200: #c2d6ff;
-  --color-brand-300: #9cb9ff;
-  --color-brand-400: #7592ff;
-  --color-brand-500: #465fff;
-  --color-brand-600: #3641f5;
-  --color-brand-700: #2a31d8;
-  --color-brand-800: #252dae;
-  --color-brand-900: #262e89;
-  --color-brand-950: #161950;
+  /* Brand scale derived from the organization's real brand purple (#6234d4),
+     shared with the public site via --color-primary below. */
+  --color-brand-25: #f7f5fd;
+  --color-brand-50: #efeafa;
+  --color-brand-100: #dbd1f5;
+  --color-brand-200: #b8a4ea;
+  --color-brand-300: #8e6dde;
+  --color-brand-400: #6a40d4;
+  --color-brand-500: #6234d4;
+  --color-brand-600: #4f26b4;
+  --color-brand-700: #3e1e8e;
+  --color-brand-800: #2e1668;
+  --color-brand-900: #21104b;
+  --color-brand-950: #120929;
 
   --color-gray-25: #fcfcfd;
   --color-gray-50: #f9fafb;
@@ -123,6 +150,22 @@
   --color-orange-900: #7e2410;
   --color-orange-950: #511c10;
 
+  /* Information/blue scale — used by badges, alerts, and info states.
+     Previously referenced (bg-blue-light-*) without being defined, so the
+     "info" variant rendered unstyled. */
+  --color-blue-light-25: #f3fbfe;
+  --color-blue-light-50: #e7f7fe;
+  --color-blue-light-100: #c9ecfd;
+  --color-blue-light-200: #94dafa;
+  --color-blue-light-300: #54c4f7;
+  --color-blue-light-400: #29b5f5;
+  --color-blue-light-500: #0ba5ec;
+  --color-blue-light-600: #0983bb;
+  --color-blue-light-700: #06618b;
+  --color-blue-light-800: #043f5a;
+  --color-blue-light-900: #022433;
+  --color-blue-light-950: #010c11;
+
   --shadow-theme-md:
     0px 4px 8px -2px rgba(16, 24, 40, 0.1),
     0px 2px 4px -2px rgba(16, 24, 40, 0.06);
@@ -162,6 +205,15 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
@@ -175,7 +227,7 @@
 }
 
 @utility menu-item {
-  @apply relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm;
+  @apply relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm transition-colors duration-150;
 }
 @utility menu-item-active {
   @apply bg-brand-50 text-brand-500 dark:bg-brand-500/[0.12] dark:text-brand-400;
@@ -207,7 +259,7 @@
   @apply text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300;
 }
 @utility menu-dropdown-item {
-  @apply relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-theme-sm font-medium;
+  @apply relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-theme-sm font-medium transition-colors duration-150;
 }
 @utility menu-dropdown-item-active {
   @apply bg-brand-50 text-brand-500 dark:bg-brand-500/[0.12] dark:text-brand-400;
@@ -252,9 +304,64 @@
   }
 }
 
+/* Calendar event category colors (FullCalendar events + the event-color radio
+   picker in the "Add Event" modal). These class names are referenced from
+   calender.component.ts/html but had no matching styles defined anywhere. */
+.fc-bg-danger {
+  @apply bg-error-50 text-error-700 dark:bg-error-500/15 dark:text-error-400;
+}
+.fc-bg-success {
+  @apply bg-success-50 text-success-700 dark:bg-success-500/15 dark:text-success-400;
+}
+.fc-bg-primary {
+  @apply bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-400;
+}
+.fc-bg-warning {
+  @apply bg-warning-50 text-warning-700 dark:bg-warning-500/15 dark:text-warning-400;
+}
+.fc-bg-danger .fc-daygrid-event-dot {
+  border-color: var(--color-error-500);
+}
+.fc-bg-success .fc-daygrid-event-dot {
+  border-color: var(--color-success-500);
+}
+.fc-bg-primary .fc-daygrid-event-dot {
+  border-color: var(--color-brand-500);
+}
+.fc-bg-warning .fc-daygrid-event-dot {
+  border-color: var(--color-warning-500);
+}
+
+.form-check-danger .box {
+  border-color: var(--color-error-500);
+}
+.form-check-success .box {
+  border-color: var(--color-success-500);
+}
+.form-check-primary .box {
+  border-color: var(--color-brand-500);
+}
+.form-check-warning .box {
+  border-color: var(--color-warning-500);
+}
+.form-check-danger .box span {
+  background-color: var(--color-error-500);
+}
+.form-check-success .box span {
+  background-color: var(--color-success-500);
+}
+.form-check-primary .box span {
+  background-color: var(--color-brand-500);
+}
+.form-check-warning .box span {
+  background-color: var(--color-warning-500);
+}
+
 :root {
-  --color-primary: #6234d4;
-  --color-primary-dark: #4d29aa;
+  /* Single source of truth: the public site's brand primary is the same
+     token as the admin panel's --color-brand-500 (both are #6234d4). */
+  --color-primary: var(--color-brand-500);
+  --color-primary-dark: var(--color-brand-600);
   --color-secondary: #c8870d;
   --color-accent: #2aa89f;
   --color-surface: #ffffff;
@@ -265,9 +372,11 @@
   --color-dark: #0e1526;
   --shadow-soft: 0 20px 45px -28px rgba(14, 21, 38, 0.3);
   --shadow-card: 0 18px 35px -26px rgba(98, 52, 212, 0.32);
-  --radius-xl: 24px;
-  --radius-lg: 16px;
-  --radius-md: 12px;
+  /* Tightened from 24/16/12 — large radii read as decorative rather than
+     minimalist; kept the step-down hierarchy intact. */
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-md: 10px;
   --container-width: 1200px;
 }
 
@@ -856,6 +965,15 @@
   border: 1px solid rgba(229, 231, 239, 0.8);
   box-shadow: var(--shadow-soft);
   border-radius: var(--radius-xl);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card:hover,
+.timeline-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
 }
 
 .hero-card {

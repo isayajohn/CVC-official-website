@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { TableDropdownComponent } from '../../common/table-dropdown/table-dropdown.component';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { RouterModule } from '@angular/router';
+import { EmptyStateComponent } from '../../common/empty-state/empty-state.component';
 
 interface Product {
   id: number;
@@ -26,6 +27,7 @@ interface Sort {
     TableDropdownComponent,
     ButtonComponent,
     RouterModule,
+    EmptyStateComponent,
   ],
   templateUrl: './product-list-table.component.html',
   styles: ``

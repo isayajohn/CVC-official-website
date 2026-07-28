@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TableDropdownComponent } from '../../common/table-dropdown/table-dropdown.component';
 import { FormsModule } from '@angular/forms';
+import { StatusBadgeComponent } from '../../ui/badge/status-badge.component';
+import { EmptyStateComponent } from '../../common/empty-state/empty-state.component';
 
 interface Transaction {
   id: number;
@@ -27,6 +29,8 @@ interface SortState {
     RouterModule,
     TableDropdownComponent,
     FormsModule,
+    StatusBadgeComponent,
+    EmptyStateComponent,
   ],
   templateUrl: './transaction-list.component.html',
   styles: ``

@@ -1,11 +1,11 @@
 
 import { Component } from '@angular/core';
-import { BadgeComponent } from '../../../ui/badge/badge.component';
+import { StatusBadgeComponent } from '../../../ui/badge/status-badge.component';
 
 @Component({
   selector: 'app-basic-table-one',
   imports: [
-    BadgeComponent
+    StatusBadgeComponent
 ],
   templateUrl: './basic-table-one.component.html',
   styles: ``
@@ -96,10 +96,4 @@ export class BasicTableOneComponent {
       status: 'Active',
     },
   ];
-
-  getBadgeColor(status: string): 'success' | 'warning' | 'error' {
-    if (status === 'Active') return 'success';
-    if (status === 'Pending') return 'warning';
-    return 'error';
-  }
 }

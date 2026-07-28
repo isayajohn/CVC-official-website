@@ -1,6 +1,6 @@
 @if (isMobileOpen$ | async) {
 <div
-  class="fixed inset-0 z-40 bg-gray-900/50 lg:hidden"
+  class="fixed inset-0 z-40 bg-gray-900/40 backdrop-blur-[2px] transition-opacity duration-200 xl:hidden"
   (click)="closeSidebar()"
 ></div>
 }

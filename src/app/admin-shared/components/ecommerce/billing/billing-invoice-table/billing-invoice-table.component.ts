@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../../ui/button/button.component';
+import { StatusBadgeComponent } from '../../../ui/badge/status-badge.component';
 
 interface Invoice {
   id: number;
@@ -15,6 +15,7 @@ interface Invoice {
   selector: 'app-billing-invoice-table',
   imports: [
     CommonModule,
+    StatusBadgeComponent,
   ],
   templateUrl: './billing-invoice-table.component.html',
 })

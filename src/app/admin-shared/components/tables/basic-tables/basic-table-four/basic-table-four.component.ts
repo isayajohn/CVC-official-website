@@ -1,12 +1,12 @@
 
 import { Component } from '@angular/core';
-import { BadgeComponent } from '../../../ui/badge/badge.component';
+import { StatusBadgeComponent } from '../../../ui/badge/status-badge.component';
 import { TableDropdownComponent } from '../../../common/table-dropdown/table-dropdown.component';
 
 @Component({
   selector: 'app-basic-table-four',
   imports: [
-    BadgeComponent,
+    StatusBadgeComponent,
     TableDropdownComponent
 ],
   templateUrl: './basic-table-four.component.html',

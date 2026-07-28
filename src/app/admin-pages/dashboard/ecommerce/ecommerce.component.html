@@ -1,23 +1,40 @@
-<div class="grid grid-cols-12 gap-4 md:gap-6">
-  <div class="col-span-12 space-y-6 xl:col-span-7">
-    <div><app-ecommerce-metrics /></div>
+<app-page-breadcrumb
+  pageTitle="Dashboard"
+  description="Overview of choir operations, sales and recent activity."
+>
+  <a [routerLink]="newInvoiceLink">
+    <app-button variant="primary">New invoice</app-button>
+  </a>
+</app-page-breadcrumb>
 
-    <div><app-monthly-sales-chart /></div>
+<div class="grid grid-cols-12 gap-4 md:gap-6">
+  <!-- Key metrics — full-width strip at the top -->
+  <div class="col-span-12">
+    <app-ecommerce-metrics />
   </div>
 
-  <div class="col-span-12 xl:col-span-5">
+  <!-- Large card: main performance chart -->
+  <div class="col-span-12 lg:col-span-8">
+    <app-monthly-sales-chart />
+  </div>
+
+  <!-- Medium card: monthly target -->
+  <div class="col-span-12 lg:col-span-4">
     <app-monthly-target />
   </div>
 
+  <!-- Wide card: full statistics chart -->
   <div class="col-span-12">
     <app-statics-chart />
   </div>
 
-  <div class="col-span-12 xl:col-span-5">
+  <!-- Medium card: customer demographics -->
+  <div class="col-span-12 lg:col-span-5">
     <app-demographic-card />
   </div>
 
-  <div class="col-span-12 xl:col-span-7">
+  <!-- Tall/wide card: recent activity -->
+  <div class="col-span-12 lg:col-span-7">
     <app-recent-orders />
   </div>
 </div>

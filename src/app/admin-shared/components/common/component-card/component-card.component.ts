@@ -12,4 +12,6 @@ export class ComponentCardComponent {
   @Input() title!: string;
   @Input() desc: string = '';
   @Input() className: string = '';
+  /** Adds hover elevation — for cards that act as a clickable tile (e.g. quick actions). */
+  @Input() interactive = false;
 }

@@ -5,4 +5,8 @@
   "
 >
   <ng-content></ng-content>
+  @if (required) {
+    <span class="text-error-500" aria-hidden="true"> *</span>
+    <span class="sr-only">(required)</span>
+  }
 </label>

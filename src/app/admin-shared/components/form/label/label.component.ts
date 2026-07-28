@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component,Input } from '@angular/core';
+import { booleanAttribute, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-label',
@@ -10,4 +10,6 @@ import { Component,Input } from '@angular/core';
 export class LabelComponent {
   @Input() for?: string;
   @Input() className = '';
+  /** Shows a required-field asterisk after the label text. */
+  @Input({ transform: booleanAttribute }) required = false;
 }

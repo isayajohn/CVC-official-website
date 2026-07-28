@@ -223,15 +223,7 @@
                 <p class="text-sm text-gray-700 dark:text-gray-400">${{invoice.total}}</p>
               </td>
               <td class="p-4 whitespace-nowrap">
-                <span
-                  class="text-theme-xs rounded-full px-2 py-0.5 font-medium"
-                  [ngClass]="{
-                    'bg-success-50 dark:bg-success-500/15 text-success-700 dark:text-success-500': invoice.status === 'Paid',
-                    'bg-error-50 text-error-600 dark:bg-error-500/15 dark:text-error-500': invoice.status === 'Unpaid',
-                    'bg-gray-100 text-gray-600 dark:bg-gray-500/15 dark:text-gray-400': invoice.status === 'Draft'
-                  }">
-                  {{invoice.status}}
-                </span>
+                <app-status-badge [status]="invoice.status" size="sm" />
               </td>
               <td class="p-4 whitespace-nowrap">
                 <div class="relative flex justify-center">

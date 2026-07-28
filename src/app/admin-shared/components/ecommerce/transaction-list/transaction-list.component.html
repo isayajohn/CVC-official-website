@@ -355,16 +355,7 @@
                     </p>
                   </td>
                   <td class="p-4 whitespace-nowrap">
-                    <span
-                      class="text-theme-xs rounded-full px-2 py-0.5 font-medium"
-                      [ngClass]="{
-                        'bg-success-50 text-success-700 dark:bg-success-500/15 dark:text-success-500': row.status === 'Completed',
-                        'bg-warning-50 text-warning-700 dark:bg-warning-500/15 dark:text-warning-500': row.status === 'Pending',
-                        'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-500': row.status === 'Failed'
-                      }"
-                    >
-                      {{ row.status }}
-                    </span>
+                    <app-status-badge [status]="row.status" size="sm" />
                   </td>
                   <td class="p-4 whitespace-nowrap">
                     <div class="relative inline-block">
@@ -406,6 +397,13 @@
                     </div>
                   </td>
                 </tr>
+            } @empty {
+              <tr>
+                <td colspan="7">
+                  <app-empty-state title="No transactions found" description="Try adjusting your search or date filter.">
+                  </app-empty-state>
+                </td>
+              </tr>
             }
             </tbody>
           </table>

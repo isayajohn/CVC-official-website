@@ -1,13 +1,13 @@
 
 import { Component } from '@angular/core';
-import { BadgeComponent } from '../../../ui/badge/badge.component';
+import { StatusBadgeComponent } from '../../../ui/badge/status-badge.component';
 import { AvatarTextComponent } from '../../../ui/avatar/avatar-text.component';
 import { CheckboxComponent } from '../../../form/input/checkbox.component';
 
 @Component({
   selector: 'app-basic-table-two',
   imports: [
-    BadgeComponent,
+    StatusBadgeComponent,
     AvatarTextComponent,
     CheckboxComponent
 ],
@@ -79,9 +79,4 @@ export class BasicTableTwoComponent {
     }
   }
 
-  getBadgeColor(type: string): 'success' | 'warning' | 'error' {
-    if (type === 'Complete') return 'success';
-    if (type === 'Pending') return 'warning';
-    return 'error';
-  }
 }

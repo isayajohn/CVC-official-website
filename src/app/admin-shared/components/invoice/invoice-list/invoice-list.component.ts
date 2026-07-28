@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TableDropdownComponent } from '../../common/table-dropdown/table-dropdown.component';
+import { StatusBadgeComponent } from '../../ui/badge/status-badge.component';
 
 interface Invoice {
   id: number;
@@ -23,6 +24,7 @@ interface SortState {
     CommonModule,
     FormsModule,
     TableDropdownComponent,
+    StatusBadgeComponent,
   ],
   templateUrl: './invoice-list.component.html',
   styles: ``

@@ -167,7 +167,7 @@
               <p class="text-sm text-gray-700 dark:text-gray-400">{{product.price}}</p>
             </td>
             <td class="px-5 py-4 whitespace-nowrap">
-              <span class="text-xs rounded-full px-2 py-0.5 font-medium" [ngClass]="{'bg-green-50 dark:bg-green-500/15 text-green-700 dark:text-green-500': product.stock === 'In Stock', 'bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-500': product.stock !== 'In Stock'}">{{product.stock}}</span>
+              <span class="text-xs rounded-full px-2 py-0.5 font-medium" [ngClass]="{'bg-success-50 dark:bg-success-500/15 text-success-700 dark:text-success-500': product.stock === 'In Stock', 'bg-error-50 dark:bg-error-500/15 text-error-700 dark:text-error-500': product.stock !== 'In Stock'}">{{product.stock}}</span>
             </td>
             <td class="px-5 py-4 whitespace-nowrap">
               <p class="text-sm text-gray-700 dark:text-gray-400">{{product.createdAt}}</p>
@@ -196,6 +196,13 @@
                   </div>
                 </app-table-dropdown>
               </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="8">
+              <app-empty-state title="No products found" description="Try adjusting your search or filters.">
+              </app-empty-state>
             </td>
           </tr>
         }

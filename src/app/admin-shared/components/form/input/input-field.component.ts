@@ -33,7 +33,7 @@ import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         [ngClass]="{
           'text-error-500': error,
           'text-success-500': success,
-          'text-gray-500': !error && !success
+          'text-gray-500 dark:text-gray-400': !error && !success
         }">
         {{ hint }}
       </p>

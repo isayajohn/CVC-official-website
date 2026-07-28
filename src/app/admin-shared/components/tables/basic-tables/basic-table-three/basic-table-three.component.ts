@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../../../ui/button/button.component';
 import { TableDropdownComponent } from '../../../common/table-dropdown/table-dropdown.component';
-import { BadgeComponent } from '../../../ui/badge/badge.component';
+import { StatusBadgeComponent } from '../../../ui/badge/status-badge.component';
 
 interface Transaction {
   image: string;
@@ -19,7 +19,7 @@ interface Transaction {
     CommonModule,
     ButtonComponent,
     TableDropdownComponent,
-    BadgeComponent,
+    StatusBadgeComponent,
   ],
   templateUrl: './basic-table-three.component.html',
   styles: ``
@@ -180,9 +180,4 @@ export class BasicTableThreeComponent {
     console.log('Delete:', item);
   }
 
-  getBadgeColor(status: string): 'success' | 'warning' | 'error' {
-    if (status === 'Success') return 'success';
-    if (status === 'Pending') return 'warning';
-    return 'error';
-  }
 }
